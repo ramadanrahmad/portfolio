@@ -36,14 +36,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. Kirim notifikasi email via Resend (asinkron tanpa menghambat response jika belum disetel)
-    sendContactNotificationEmail({
-      name: name.trim(),
-      email: email.trim(),
-      message: message.trim(),
-    }).catch((emailErr) => {
-      console.warn("⚠️ [Resend Background] Gagal mengirim notifikasi email:", emailErr);
-    });
+    // 3. Kirim notifikasi email via Resend (di-await agar serverless runtime Vercel tidak memutus proses sebelum email terkirim)
+    try {
+      const emailRes = await sendContactNotificationEmail({
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim(),
+      });
+      if (!emailRes.success && !emailRes.skipped) {
+        console.warn("⚠️ [Resend] Status pengiriman email:", emailRes.error);
+      }
+    } catch (emailErr) {
+      console.error("⚠️ [Resend] Exception saat kirim email:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
