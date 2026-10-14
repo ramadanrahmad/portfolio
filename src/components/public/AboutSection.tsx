@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { type Profile } from "@/types";
 import { Button } from "@/components/ui/button";
+import { trackCvDownload } from "@/lib/analytics-client";
 import {
   GraduationCap,
   MapPin,
@@ -87,7 +90,12 @@ export function AboutSection({ profile }: AboutSectionProps) {
 
             <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap items-center gap-4">
               {profile.cv_url && (
-                <a href={profile.cv_url} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={profile.cv_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackCvDownload}
+                >
                   <Button variant="glow" size="default" className="gap-2 text-xs">
                     <FileDown className="w-4 h-4" />
                     <span>Download Formal Resume (PDF)</span>

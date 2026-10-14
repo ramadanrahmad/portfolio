@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { contactFormSchema } from "@/lib/validations";
+import { sendContactNotificationEmail } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
@@ -34,6 +35,15 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // 3. Kirim notifikasi email via Resend (asinkron tanpa menghambat response jika belum disetel)
+    sendContactNotificationEmail({
+      name: name.trim(),
+      email: email.trim(),
+      message: message.trim(),
+    }).catch((emailErr) => {
+      console.warn("⚠️ [Resend Background] Gagal mengirim notifikasi email:", emailErr);
+    });
 
     return NextResponse.json({ success: true });
   } catch (err: any) {

@@ -12,6 +12,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getAnalyticsSummary } from "@/lib/analytics";
+import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
 
 // Memastikan data dashboard selalu segar saat dimuat
 export const revalidate = 0;
@@ -19,7 +21,11 @@ export const revalidate = 0;
 export default async function AdminDashboardPage() {
   const supabase = await createClient();
 
-  // 1. Ambil statistik proyek
+  // 1. Ambil data analitik dan status Resend
+  const analytics = await getAnalyticsSummary();
+  const hasResend = !!process.env.RESEND_API_KEY;
+
+  // 2. Ambil statistik proyek
   const { data: projectsData } = await supabase
     .from("projects")
     .select("id, status");
@@ -30,16 +36,16 @@ export default async function AdminDashboardPage() {
   const draftProjects =
     projectsData?.filter((p) => p.status === "draft").length || 0;
 
-  // 2. Ambil statistik pesan kontak yang belum dibaca
+  // 3. Ambil statistik pesan kontak yang belum dibaca
   const { count: unreadMessagesCount } = await supabase
     .from("messages")
     .select("*", { count: "exact", head: true })
     .eq("is_read", false);
 
-  // 3. Ambil data profil singkat
+  // 4. Ambil data profil singkat
   const { data: profile } = await supabase
     .from("profile")
-    .select("name, headline, open_to_work")
+    .select("name, headline, email, open_to_work")
     .single();
 
   const stats = [
@@ -130,6 +136,25 @@ export default async function AdminDashboardPage() {
             </div>
           );
         })}
+      </div>
+
+      {/* Bagian Statistik Kunjungan & Notifikasi Email */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              Statistik Kunjungan & Interaksi
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Pelacakan tayangan halaman, unduhan berkas CV, dan tren popularitas proyek
+            </p>
+          </div>
+        </div>
+        <AnalyticsDashboard
+          analytics={analytics}
+          hasResend={hasResend}
+          notificationEmail={profile?.email || "ramadanrahmad1910@gmail.com"}
+        />
       </div>
 
       {/* Aksi Cepat / Shortcut */}

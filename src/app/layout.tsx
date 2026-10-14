@@ -75,6 +75,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { PageTracker } from "@/components/analytics/PageTracker";
+
 export default function RootLayout({
   children,
 }: {
@@ -105,6 +107,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-700 dark:selection:text-cyan-300 bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
+        <PageTracker />
         {children}
       </body>
     </html>

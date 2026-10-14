@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Profile } from "@/types";
 import { Button } from "@/components/ui/button";
+import { trackCvDownload } from "@/lib/analytics-client";
 import {
   Sparkles,
   ArrowRight,
@@ -87,7 +88,12 @@ export function HeroSection({ profile }: HeroSectionProps) {
               </Link>
 
               {cvUrl ? (
-                <a href={cvUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackCvDownload}
+                >
                   <Button variant="outline" size="lg" className="gap-2 text-sm bg-white/80 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200">
                     <FileDown className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     <span>Download CV</span>
