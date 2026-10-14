@@ -50,6 +50,9 @@ export async function recordAnalyticsEvent({
 }: AnalyticsEventParams) {
   try {
     const supabase = createAdminClient();
+    if (!supabase) {
+      return { success: false, error: "Supabase client not available" };
+    }
 
     // 1. Coba catat ke tabel `site_analytics`
     const { error: tableError } = await supabase.from("site_analytics").insert([
@@ -152,8 +155,6 @@ export async function recordAnalyticsEvent({
  * Ambil data ringkasan analitik untuk dashboard admin
  */
 export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
-  const supabase = createAdminClient();
-
   // Siapkan rentang 7 hari terakhir
   const last7Days: { dateStr: string; label: string }[] = [];
   const dayNames = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
@@ -165,18 +166,37 @@ export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
     last7Days.push({ dateStr, label });
   }
 
-  const todayStr = new Date().toISOString().split("T")[0];
+  const defaultSummary: AnalyticsSummary = {
+    totalViews: 0,
+    todayViews: 0,
+    cvDownloads: 0,
+    topProjects: [],
+    dailyTrend: last7Days.map(({ dateStr, label }) => ({
+      date: dateStr,
+      label,
+      views: 0,
+    })),
+    recentActivity: [],
+  };
 
-  // 1. Cek apakah tabel `site_analytics` ada & berisi data
-  const { data: tableData, error: tableError } = await supabase
-    .from("site_analytics")
-    .select("id, event_type, path, project_slug, created_at")
-    .order("created_at", { ascending: false });
+  try {
+    const supabase = createAdminClient();
+    if (!supabase) {
+      return defaultSummary;
+    }
 
-  // Ambil list proyek untuk mapping nama proyek
-  const { data: allProjects } = await supabase
-    .from("projects")
-    .select("id, title, slug, extra");
+    const todayStr = new Date().toISOString().split("T")[0];
+
+    // 1. Cek apakah tabel `site_analytics` ada & berisi data
+    const { data: tableData, error: tableError } = await supabase
+      .from("site_analytics")
+      .select("id, event_type, path, project_slug, created_at")
+      .order("created_at", { ascending: false });
+
+    // Ambil list proyek untuk mapping nama proyek
+    const { data: allProjects } = await supabase
+      .from("projects")
+      .select("id, title, slug, extra");
 
   const projectMap = new Map<string, string>();
   const projectViewsMap = new Map<string, number>();
@@ -282,12 +302,16 @@ export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
     };
   }).sort((a, b) => b.views - a.views);
 
-  return {
-    totalViews: stats.totalViews || 0,
-    todayViews: dailyViews[todayStr] || 0,
-    cvDownloads: stats.cvDownloads || 0,
-    topProjects,
-    dailyTrend,
-    recentActivity: stats.recentActivity || [],
-  };
+    return {
+      totalViews: stats.totalViews || 0,
+      todayViews: dailyViews[todayStr] || 0,
+      cvDownloads: stats.cvDownloads || 0,
+      topProjects,
+      dailyTrend,
+      recentActivity: stats.recentActivity || [],
+    };
+  } catch (err: any) {
+    console.error("Gagal mengambil data analitik:", err?.message);
+    return defaultSummary;
+  }
 }

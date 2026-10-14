@@ -21,8 +21,22 @@ export const revalidate = 0;
 export default async function AdminDashboardPage() {
   const supabase = await createClient();
 
-  // 1. Ambil data analitik dan status Resend
-  const analytics = await getAnalyticsSummary();
+  // 1. Ambil data analitik dan status Resend secara aman
+  let analytics = {
+    totalViews: 0,
+    todayViews: 0,
+    cvDownloads: 0,
+    topProjects: [],
+    dailyTrend: [],
+    recentActivity: [],
+  };
+
+  try {
+    analytics = await getAnalyticsSummary();
+  } catch (e) {
+    console.warn("Gagal mengambil data analitik:", e);
+  }
+
   const hasResend = !!process.env.RESEND_API_KEY;
 
   // 2. Ambil statistik proyek
@@ -46,7 +60,7 @@ export default async function AdminDashboardPage() {
   const { data: profile } = await supabase
     .from("profile")
     .select("name, headline, email, open_to_work")
-    .single();
+    .maybeSingle();
 
   const stats = [
     {
