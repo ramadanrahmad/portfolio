@@ -16,18 +16,19 @@ export function FeaturedProjectsSection({
 }: FeaturedProjectsSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  // Filter hanya proyek Featured
+  // Prioritaskan proyek yang ditandai Featured. Jika belum ada yang ditandai, tampilkan proyek yang sudah Published.
   const featuredList = projects.filter((p) => p.is_featured);
+  const displayList = featuredList.length > 0 ? featuredList : projects;
 
-  // Jika tidak ada proyek featured sama sekali, sembunyikan section ini otomatis (sesuai instruksi prompt!)
-  if (featuredList.length === 0) {
+  // Jika tidak ada proyek published sama sekali, sembunyikan section ini otomatis
+  if (displayList.length === 0) {
     return null;
   }
 
   const filtered =
     activeCategory === "all"
-      ? featuredList
-      : featuredList.filter((p) => p.category === activeCategory);
+      ? displayList
+      : displayList.filter((p) => p.category === activeCategory);
 
   return (
     <section id="projects" className="py-20 relative">
