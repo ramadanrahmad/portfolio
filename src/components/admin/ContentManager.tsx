@@ -276,18 +276,18 @@ export function ContentManager({
   return (
     <div className="space-y-6 pb-16">
       {/* Header */}
-      <div className="p-6 rounded-2xl glass-card border border-slate-800">
-        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-          <Layers className="w-6 h-6 text-cyan-400" />
+      <div className="p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+          <Layers className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
           Manajemen Konten Portofolio
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
           Kelola keahlian teknologi, riwayat pendidikan/organisasi, sertifikat penghargaan, dan testimoni tanpa mengedit kode.
         </p>
       </div>
 
       {/* Tab Switcher */}
-      <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl glass-card border border-slate-800">
+      <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 shadow-sm">
         {[
           { id: "skills", label: "Skills & Tech", count: skills.length, icon: Layers },
           { id: "experiences", label: "Experience & Education", count: experiences.length, icon: GraduationCap },
@@ -302,13 +302,13 @@ export function ContentManager({
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium transition-all ${
                 isActive
-                  ? "bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 shadow-sm shadow-cyan-500/10"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                  ? "bg-cyan-50 dark:bg-cyan-500/15 border border-cyan-200 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-300 shadow-sm font-semibold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/60"
               }`}
             >
               <Icon className="w-4 h-4" />
               <span>{tab.label}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-900 text-slate-500">
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-200 dark:bg-slate-900 text-slate-700 dark:text-slate-400 font-mono">
                 {tab.count}
               </span>
             </button>
@@ -320,7 +320,7 @@ export function ContentManager({
       {activeTab === "skills" && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-600 dark:text-slate-400">
               Daftar keahlian teknologi dikelompokkan berdasarkan grup
             </span>
             <Button
@@ -338,17 +338,17 @@ export function ContentManager({
             {skills.map((s) => (
               <div
                 key={s.id}
-                className="glass-card rounded-xl p-3.5 border border-slate-800 flex items-center justify-between group hover:border-slate-700 transition-colors"
+                className="glass-card rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 flex items-center justify-between group hover:border-slate-300 dark:hover:border-slate-700 shadow-sm transition-colors"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0">
                     <DynamicIcon name={s.icon} className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-xs font-semibold text-white truncate">
+                    <h4 className="text-xs font-semibold text-slate-900 dark:text-white truncate">
                       {s.name}
                     </h4>
-                    <span className="text-[10px] text-slate-500 block truncate">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-500 block truncate">
                       {s.group_name}
                     </span>
                   </div>
@@ -357,7 +357,7 @@ export function ContentManager({
                 <div className="flex items-center gap-1 opacity-80 group-hover:opacity-100">
                   <button
                     onClick={() => openModal("skill", s)}
-                    className="p-1 text-slate-400 hover:text-cyan-400 rounded"
+                    className="p-1 text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 rounded transition-colors"
                     title="Edit"
                   >
                     <Edit className="w-3.5 h-3.5" />
@@ -366,7 +366,7 @@ export function ContentManager({
                     onClick={() =>
                       setDeletingItem({ type: "skill", id: s.id, title: s.name })
                     }
-                    className="p-1 text-slate-400 hover:text-red-400 rounded"
+                    className="p-1 text-slate-400 hover:text-red-500 rounded transition-colors"
                     title="Hapus"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -382,7 +382,7 @@ export function ContentManager({
       {activeTab === "experiences" && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-600 dark:text-slate-400">
               Riwayat pendidikan kampus, kepanitiaan, lomba/hackathon, dan kerja
             </span>
             <Button
@@ -400,7 +400,7 @@ export function ContentManager({
             {experiences.map((exp) => (
               <div
                 key={exp.id}
-                className="glass-card rounded-xl p-4 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:border-slate-700 transition-colors"
+                className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:border-slate-300 dark:hover:border-slate-700 shadow-sm transition-colors"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
@@ -411,14 +411,14 @@ export function ContentManager({
                       {exp.start_date} - {exp.end_date || "Present"}
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-white">{exp.title}</h3>
-                  <h4 className="text-xs text-cyan-400">{exp.institution}</h4>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{exp.title}</h3>
+                  <h4 className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">{exp.institution}</h4>
                 </div>
 
                 <div className="flex items-center gap-1 self-end sm:self-center">
                   <button
                     onClick={() => openModal("experience", exp)}
-                    className="p-1.5 text-slate-400 hover:text-cyan-400 rounded"
+                    className="p-1.5 text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 rounded transition-colors"
                     title="Edit"
                   >
                     <Edit className="w-4 h-4" />
@@ -431,7 +431,7 @@ export function ContentManager({
                         title: exp.title,
                       })
                     }
-                    className="p-1.5 text-slate-400 hover:text-red-400 rounded"
+                    className="p-1.5 text-slate-400 hover:text-red-500 rounded transition-colors"
                     title="Hapus"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -447,7 +447,7 @@ export function ContentManager({
       {activeTab === "certificates" && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-500 dark:text-slate-400">
               Sertifikat kursus, kompetisi, dan lisensi keahlian
             </span>
             <Button
@@ -465,41 +465,41 @@ export function ContentManager({
             {certificates.map((c) => (
               <div
                 key={c.id}
-                className="glass-card rounded-xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-slate-700 transition-colors"
+                className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex flex-col justify-between group hover:border-cyan-500/50 dark:hover:border-slate-700 transition-colors"
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] font-mono text-cyan-400 font-bold">
+                    <span className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-bold">
                       {c.issuer}
                     </span>
-                    <span className="text-[10px] text-slate-500">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">
                       {c.issue_date}
                     </span>
                   </div>
-                  <h3 className="text-xs font-bold text-white line-clamp-2">
+                  <h3 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-2">
                     {c.title}
                   </h3>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 mt-3 border-t border-slate-800/80">
+                <div className="flex items-center justify-between pt-3 mt-3 border-t border-slate-200 dark:border-slate-800/80">
                   {c.credential_url ? (
                     <a
                       href={c.credential_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] text-cyan-400 hover:underline flex items-center gap-1"
+                      className="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1"
                     >
                       <span>Lihat Link</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   ) : (
-                    <span className="text-[10px] text-slate-600">No URL</span>
+                    <span className="text-[10px] text-slate-400 dark:text-slate-600">No URL</span>
                   )}
 
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => openModal("certificate", c)}
-                      className="p-1 text-slate-400 hover:text-cyan-400 rounded"
+                      className="p-1 text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 rounded"
                     >
                       <Edit className="w-3.5 h-3.5" />
                     </button>
@@ -511,7 +511,7 @@ export function ContentManager({
                           title: c.title,
                         })
                       }
-                      className="p-1 text-slate-400 hover:text-red-400 rounded"
+                      className="p-1 text-slate-400 hover:text-red-500 dark:hover:text-red-400 rounded"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -527,7 +527,7 @@ export function ContentManager({
       {activeTab === "testimonials" && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-500 dark:text-slate-400">
               Kutipan rekomendasi dari dosen, rekan proyek, atau klien
             </span>
             <Button
@@ -545,22 +545,22 @@ export function ContentManager({
             {testimonials.map((t) => (
               <div
                 key={t.id}
-                className="glass-card rounded-xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-slate-700 transition-colors"
+                className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex flex-col justify-between group hover:border-cyan-500/50 dark:hover:border-slate-700 transition-colors"
               >
-                <p className="text-xs text-slate-300 italic mb-4">
+                <p className="text-xs text-slate-700 dark:text-slate-300 italic mb-4">
                   "{t.quote}"
                 </p>
 
-                <div className="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800/80">
                   <div>
-                    <h4 className="text-xs font-bold text-white">{t.name}</h4>
-                    <span className="text-[10px] text-slate-500">{t.role}</span>
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white">{t.name}</h4>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">{t.role}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => openModal("testimonial", t)}
-                      className="p-1 text-slate-400 hover:text-cyan-400 rounded"
+                      className="p-1 text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 rounded"
                     >
                       <Edit className="w-3.5 h-3.5" />
                     </button>
@@ -572,7 +572,7 @@ export function ContentManager({
                           title: t.name,
                         })
                       }
-                      className="p-1 text-slate-400 hover:text-red-400 rounded"
+                      className="p-1 text-slate-400 hover:text-red-500 dark:hover:text-red-400 rounded"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -608,7 +608,7 @@ export function ContentManager({
             {editingItem?.type === "skill" && (
               <>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Nama Skill *
                   </label>
                   <Input
@@ -616,17 +616,17 @@ export function ContentManager({
                     placeholder="misal: TypeScript / Next.js / Unity"
                     value={skillName}
                     onChange={(e) => setSkillName(e.target.value)}
-                    className="bg-slate-950 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Kelompok / Group *
                   </label>
                   <select
                     value={skillGroup}
                     onChange={(e) => setSkillGroup(e.target.value as any)}
-                    className="w-full h-10 px-3 rounded-lg border border-slate-800 bg-slate-950 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full h-10 px-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-cyan-500"
                   >
                     <option value="Languages">Languages</option>
                     <option value="Frontend">Frontend</option>
@@ -637,25 +637,25 @@ export function ContentManager({
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Nama Ikon Lucide
                     </label>
                     <Input
                       placeholder="misal: Code2, Server, Gamepad2"
                       value={skillIcon}
                       onChange={(e) => setSkillIcon(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Urutan Tampil
                     </label>
                     <Input
                       type="number"
                       value={skillSort}
                       onChange={(e) => setSkillSort(Number(e.target.value))}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                 </div>
@@ -667,13 +667,13 @@ export function ContentManager({
               <>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Tipe *
                     </label>
                     <select
                       value={expType}
                       onChange={(e) => setExpType(e.target.value as any)}
-                      className="w-full h-10 px-3 rounded-lg border border-slate-800 bg-slate-950 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full h-10 px-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-cyan-500"
                     >
                       <option value="education">Education (Pendidikan)</option>
                       <option value="organization">Organization (Organisasi)</option>
@@ -682,20 +682,20 @@ export function ContentManager({
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Urutan
                     </label>
                     <Input
                       type="number"
                       value={expSort}
                       onChange={(e) => setExpSort(Number(e.target.value))}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Judul / Peran *
                   </label>
                   <Input
@@ -703,12 +703,12 @@ export function ContentManager({
                     placeholder="misal: S1 Teknik Informatika / Lead Programmer"
                     value={expTitle}
                     onChange={(e) => setExpTitle(e.target.value)}
-                    className="bg-slate-950 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Institusi / Lembaga / Lomba *
                   </label>
                   <Input
@@ -716,13 +716,13 @@ export function ContentManager({
                     placeholder="misal: Universitas Sriwijaya"
                     value={expInstitution}
                     onChange={(e) => setExpInstitution(e.target.value)}
-                    className="bg-slate-950 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Waktu Mulai *
                     </label>
                     <Input
@@ -730,24 +730,24 @@ export function ContentManager({
                       placeholder="misal: 2022"
                       value={expStart}
                       onChange={(e) => setExpStart(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Waktu Selesai
                     </label>
                     <Input
                       placeholder="misal: Sekarang / 2024"
                       value={expEnd}
                       onChange={(e) => setExpEnd(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Deskripsi Aktivitas
                   </label>
                   <textarea
@@ -755,7 +755,7 @@ export function ContentManager({
                     placeholder="Penjelasan singkat kontribusi..."
                     value={expDesc}
                     onChange={(e) => setExpDesc(e.target.value)}
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950 p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-cyan-500"
                   />
                 </div>
               </>
@@ -765,7 +765,7 @@ export function ContentManager({
             {editingItem?.type === "certificate" && (
               <>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Nama Sertifikat / Penghargaan *
                   </label>
                   <Input
@@ -773,12 +773,12 @@ export function ContentManager({
                     placeholder="misal: Finalis Game Development Competition"
                     value={certTitle}
                     onChange={(e) => setCertTitle(e.target.value)}
-                    className="bg-slate-950 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Penerbit / Penyelenggara *
                     </label>
                     <Input
@@ -786,11 +786,11 @@ export function ContentManager({
                       placeholder="misal: IT Fest / Dicoding"
                       value={certIssuer}
                       onChange={(e) => setCertIssuer(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Tahun / Tanggal *
                     </label>
                     <Input
@@ -798,19 +798,19 @@ export function ContentManager({
                       placeholder="misal: 2024"
                       value={certDate}
                       onChange={(e) => setCertDate(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     URL Verifikasi Kredensial (Opsional)
                   </label>
                   <Input
                     placeholder="https://credential.net/..."
                     value={certUrl}
                     onChange={(e) => setCertUrl(e.target.value)}
-                    className="bg-slate-950 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
@@ -828,7 +828,7 @@ export function ContentManager({
               <>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Nama Pemberi Testimoni *
                     </label>
                     <Input
@@ -836,11 +836,11 @@ export function ContentManager({
                       placeholder="misal: Dr. Dosen Pembimbing"
                       value={testName}
                       onChange={(e) => setTestName(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Jabatan / Hubungan *
                     </label>
                     <Input
@@ -848,12 +848,12 @@ export function ContentManager({
                       placeholder="misal: Dosen Rekayasa Web / Rekan Tim"
                       value={testRole}
                       onChange={(e) => setTestRole(e.target.value)}
-                      className="bg-slate-950 border-slate-800 text-xs"
+                      className="bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Kutipan Testimoni *
                   </label>
                   <textarea
@@ -862,7 +862,7 @@ export function ContentManager({
                     placeholder="Kutipan pesan/apresiasi terhadap etos kerja Rahmad..."
                     value={testQuote}
                     onChange={(e) => setTestQuote(e.target.value)}
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950 p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-cyan-500"
                   />
                 </div>
                 <div>
@@ -916,7 +916,7 @@ export function ContentManager({
             <DialogTitle>Konfirmasi Hapus</DialogTitle>
             <DialogDescription>
               Apakah Anda yakin ingin menghapus{" "}
-              <strong className="text-white">"{deletingItem?.title}"</strong>?
+              <strong className="text-slate-900 dark:text-white">"{deletingItem?.title}"</strong>?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

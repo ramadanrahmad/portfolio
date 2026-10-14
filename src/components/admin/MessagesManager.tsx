@@ -95,27 +95,27 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
   return (
     <div className="space-y-6 pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-            <Inbox className="w-6 h-6 text-cyan-400" />
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <Inbox className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             Kotak Masuk Pesan Kontak
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
             Total {messages.length} pesan masuk ({unreadCount} belum dibaca).
           </p>
         </div>
       </div>
 
       {/* Kontrol Pencarian & Filter */}
-      <div className="p-4 rounded-2xl glass-card border border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+      <div className="p-4 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-sm">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <Input
             placeholder="Cari pengirim, email, atau isi pesan..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-10 bg-slate-950/80 border-slate-800 text-xs"
+            className="pl-10 h-10 bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
           />
         </div>
 
@@ -130,8 +130,8 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
               onClick={() => setFilter(tab.id as any)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 filter === tab.id
-                  ? "bg-cyan-500/15 border border-cyan-500/40 text-cyan-300"
-                  : "bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200"
+                  ? "bg-cyan-50 dark:bg-cyan-500/15 border border-cyan-200 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-300 font-semibold shadow-sm"
+                  : "bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               <span>{tab.label}</span> ({tab.count})
@@ -142,12 +142,12 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
 
       {/* Daftar Pesan */}
       {filteredMessages.length === 0 ? (
-        <div className="glass-card rounded-2xl p-16 text-center border border-slate-800">
-          <Mail className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white mb-1">
+        <div className="glass-card rounded-2xl p-16 text-center border border-slate-200 dark:border-slate-800 shadow-sm">
+          <Mail className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-3" />
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">
             Tidak ada pesan
           </h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
             Semua pesan dari formulir kontak publik akan ditampilkan di sini.
           </p>
         </div>
@@ -157,18 +157,18 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
             <div
               key={msg.id}
               onClick={() => handleOpenMessage(msg)}
-              className={`glass-card rounded-xl p-4 border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 group ${
+              className={`glass-card rounded-xl p-4 border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 group shadow-sm ${
                 !msg.is_read
-                  ? "border-cyan-500/40 bg-cyan-950/10 hover:border-cyan-500/60"
-                  : "border-slate-800 hover:border-slate-700 bg-slate-950/40"
+                  ? "border-cyan-400/60 dark:border-cyan-500/40 bg-cyan-50/50 dark:bg-cyan-950/10 hover:border-cyan-500"
+                  : "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-950/40"
               }`}
             >
               <div className="flex items-start gap-3.5 min-w-0">
                 <div
                   className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border ${
                     !msg.is_read
-                      ? "bg-cyan-500/20 border-cyan-500/30 text-cyan-400 shadow-md shadow-cyan-500/10"
-                      : "bg-slate-900 border-slate-800 text-slate-500"
+                      ? "bg-cyan-500/10 dark:bg-cyan-500/20 border-cyan-500/30 text-cyan-600 dark:text-cyan-400 shadow-sm"
+                      : "bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-500"
                   }`}
                 >
                   {!msg.is_read ? (
@@ -180,17 +180,17 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors truncate">
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors truncate">
                       {msg.name}
                     </h3>
                     {!msg.is_read && (
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
                     )}
                   </div>
-                  <span className="text-xs font-mono text-cyan-400 block truncate">
+                  <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 block truncate">
                     {msg.email}
                   </span>
-                  <p className="text-xs text-slate-400 line-clamp-1 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-1 mt-1 leading-relaxed">
                     {msg.message}
                   </p>
                 </div>
@@ -213,7 +213,7 @@ export function MessagesManager({ initialMessages }: MessagesManagerProps) {
                 >
                   <button
                     onClick={() => handleToggleRead(msg.id, msg.is_read)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-slate-800 transition-colors"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                     title={msg.is_read ? "Tandai belum dibaca" : "Tandai sudah dibaca"}
                   >
                     {msg.is_read ? (

@@ -38,14 +38,14 @@ export function DialogContent({
   return (
     <div
       className={cn(
-        "glass-card border border-slate-800 rounded-2xl p-6 shadow-2xl relative animate-in fade-in zoom-in-95 duration-150",
+        "glass-card border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-2xl relative animate-in fade-in zoom-in-95 duration-150",
         className
       )}
     >
       {onClose && (
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-1 text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors"
+          className="absolute right-4 top-4 rounded-lg p-1 text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
@@ -77,7 +77,7 @@ export function DialogTitle({
   return (
     <h3
       className={cn(
-        "text-lg font-semibold leading-none tracking-tight text-white",
+        "text-lg font-semibold leading-none tracking-tight text-slate-900 dark:text-white",
         className
       )}
       {...props}
@@ -91,7 +91,7 @@ export function DialogDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("text-xs text-slate-400 leading-relaxed", className)}
+      className={cn("text-xs text-slate-600 dark:text-slate-400 leading-relaxed", className)}
       {...props}
     />
   );

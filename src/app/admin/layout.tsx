@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/public/ThemeToggle";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -36,16 +37,14 @@ export default function AdminLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  // Pastikan Admin Panel selalu bernuansa Dark Cyber Console
+  // Sinkronisasi tema dengan preferensi yang tersimpan di localStorage
   useEffect(() => {
-    document.documentElement.classList.add("dark");
-    return () => {
-      // Saat navigasi keluar dari admin, kembalikan preferensi public yang tersimpan di localStorage
-      const savedTheme = localStorage.getItem("portfolio-theme");
-      if (savedTheme === "light") {
-        document.documentElement.classList.remove("dark");
-      }
-    };
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
   }, []);
 
   // Jika sedang di halaman login, tampilkan halaman penuh tanpa sidebar
@@ -62,47 +61,50 @@ export default function AdminLayout({
   };
 
   return (
-    <div className="dark admin-scope min-h-screen bg-[#07090e] text-slate-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 flex flex-col md:flex-row transition-colors duration-200">
       {/* Mobile Top Header */}
-      <div className="md:hidden flex items-center justify-between p-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+      <div className="md:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 font-bold text-sm">
             RR
           </div>
-          <span className="font-semibold text-sm tracking-wide">
+          <span className="font-semibold text-sm tracking-wide text-slate-900 dark:text-white">
             Admin Panel
           </span>
         </div>
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300"
-          aria-label="Toggle Navigation"
-        >
-          {mobileMenuOpen ? (
-            <X className="w-5 h-5" />
-          ) : (
-            <Menu className="w-5 h-5" />
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300"
+            aria-label="Toggle Navigation"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Sidebar Desktop & Mobile Overlay */}
       <aside
-        className={`fixed md:sticky top-0 left-0 h-screen w-64 bg-slate-950/95 border-r border-slate-800/80 p-5 flex flex-col justify-between z-40 transition-transform duration-300 md:translate-x-0 ${
+        className={`fixed md:sticky top-0 left-0 h-screen w-64 bg-white/95 dark:bg-slate-950/95 border-r border-slate-200 dark:border-slate-800/80 p-5 flex flex-col justify-between z-40 transition-transform duration-300 md:translate-x-0 shadow-sm md:shadow-none ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div>
           {/* Logo / Branding */}
           <div className="flex items-center gap-3 mb-8 px-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/10">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shadow-md shadow-cyan-500/10">
               <Code2 className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-bold text-sm text-white tracking-wide">
+              <h2 className="font-bold text-sm text-slate-900 dark:text-white tracking-wide">
                 Rahmad Ramadan
               </h2>
-              <span className="text-[11px] text-cyan-400 font-mono">
+              <span className="text-[11px] text-cyan-600 dark:text-cyan-400 font-mono font-medium">
                 Administrator
               </span>
             </div>
@@ -124,13 +126,13 @@ export default function AdminLayout({
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-medium transition-all ${
                     isActive
-                      ? "bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 shadow-sm shadow-cyan-500/10"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                      ? "bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/25 shadow-sm font-semibold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/60"
                   }`}
                 >
                   <Icon
                     className={`w-4 h-4 ${
-                      isActive ? "text-cyan-400" : "text-slate-500"
+                      isActive ? "text-cyan-600 dark:text-cyan-400" : "text-slate-400 dark:text-slate-500"
                     }`}
                   />
                   <span>{item.label}</span>
@@ -141,19 +143,27 @@ export default function AdminLayout({
         </div>
 
         {/* Bottom Actions */}
-        <div className="pt-4 border-t border-slate-800/80 space-y-2">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-2">
+          {/* Theme Toggle Row */}
+          <div className="flex items-center justify-between px-3.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
+            <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+              Tema Mode
+            </span>
+            <ThemeToggle />
+          </div>
+
           {/* Tombol Lihat sebagai Pengunjung */}
           <Link
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between w-full px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-cyan-300 hover:bg-slate-900/60 border border-transparent hover:border-slate-800 transition-all group"
+            className="flex items-center justify-between w-full px-3.5 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-slate-100 dark:hover:bg-slate-900/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 transition-all group"
           >
             <span className="flex items-center gap-2">
-              <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-400" />
               Lihat Pengunjung
             </span>
-            <span className="text-[10px] bg-slate-900 px-1.5 py-0.5 rounded text-slate-500">
+            <span className="text-[10px] bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded text-slate-500">
               Baru
             </span>
           </Link>
@@ -164,9 +174,9 @@ export default function AdminLayout({
             disabled={isLoggingOut}
             variant="ghost"
             size="sm"
-            className="w-full justify-start gap-2.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10"
+            className="w-full justify-start gap-2.5 text-xs text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-500/10"
           >
-            <LogOut className="w-4 h-4 text-red-400" />
+            <LogOut className="w-4 h-4 text-red-500 dark:text-red-400" />
             <span>{isLoggingOut ? "Keluar..." : "Keluar (Sign Out)"}</span>
           </Button>
         </div>

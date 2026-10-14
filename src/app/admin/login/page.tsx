@@ -16,13 +16,12 @@ export default function AdminLoginPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.add("dark");
-    return () => {
-      const savedTheme = localStorage.getItem("portfolio-theme");
-      if (savedTheme === "light") {
-        document.documentElement.classList.remove("dark");
-      }
-    };
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -86,7 +85,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#07090e] relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-200">
       {/* Background Glow Circles */}
       <div className="absolute top-1/4 -left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -95,37 +94,37 @@ export default function AdminLoginPage() {
         {/* Tombol kembali ke beranda */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-cyan-400 transition-colors mb-6 group"
+          className="inline-flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors mb-6 group font-medium"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Kembali ke Tampilan Publik
         </Link>
 
         {/* Card Login Glassmorphism */}
-        <div className="glass-card rounded-2xl p-8 shadow-2xl border border-slate-800/80 relative overflow-hidden">
+        <div className="glass-card rounded-2xl p-8 shadow-xl border border-slate-200 dark:border-slate-800/80 relative overflow-hidden">
           {/* Top subtle gradient highlight */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
 
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 shadow-lg shadow-cyan-500/10">
+            <div className="w-12 h-12 mx-auto rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-4 shadow-md shadow-cyan-500/10">
               <Lock className="w-6 h-6" />
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-[11px] font-medium text-cyan-400 mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 text-[11px] font-semibold text-cyan-700 dark:text-cyan-400 mb-2">
               <Sparkles className="w-3 h-3" />
               <span>Restricted Area</span>
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-white">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Admin Portal
             </h1>
-            <p className="text-sm text-slate-400 mt-1">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
               Masuk untuk mengelola portofolio & proyek Rahmad Ramadan
             </p>
           </div>
 
           {/* Pesan Kesalahan */}
           {errorMessage && (
-            <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-400 text-xs animate-shake">
+            <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-600 dark:text-red-400 text-xs animate-shake">
               <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{errorMessage}</span>
             </div>
@@ -136,12 +135,12 @@ export default function AdminLoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-xs font-medium text-slate-300 mb-1.5"
+                className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
               >
                 Email Administrator
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Mail className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <Input
                   id="email"
                   type="email"
@@ -149,7 +148,7 @@ export default function AdminLoginPage() {
                   placeholder="ramadanrahmad1910@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-9 bg-slate-950/60 border-slate-800 focus-visible:border-cyan-500"
+                  className="pl-9 bg-white dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus-visible:border-cyan-500"
                 />
               </div>
             </div>
@@ -157,12 +156,12 @@ export default function AdminLoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-xs font-medium text-slate-300 mb-1.5"
+                className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
               >
                 Kata Sandi
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Lock className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <Input
                   id="password"
                   type="password"
@@ -170,7 +169,7 @@ export default function AdminLoginPage() {
                   placeholder="••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-9 bg-slate-950/60 border-slate-800 focus-visible:border-cyan-500"
+                  className="pl-9 bg-white dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus-visible:border-cyan-500"
                 />
               </div>
             </div>

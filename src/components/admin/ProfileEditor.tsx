@@ -151,13 +151,13 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-8 pb-16">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-            <User className="w-6 h-6 text-cyan-400" />
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <User className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             Pengaturan Profil & CV
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
             Ubah headline, bio, upload resume PDF, foto profil, dan tautan sosial media tanpa edit kode.
           </p>
         </div>
@@ -184,13 +184,13 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
 
       {/* Alert Messages */}
       {errorMessage && (
-        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs flex items-center gap-2.5">
           <AlertTriangle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
       {successMessage && (
-        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs flex items-center gap-2.5">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{successMessage}</span>
         </div>
@@ -200,26 +200,26 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Kolom Kiri: Informasi Personal & Bio (2 cols) */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800 pb-3">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3">
               Informasi Personal & Headline
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                   Nama Lengkap *
                 </label>
                 <Input
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                   Email Kontak Utama *
                 </label>
                 <Input
@@ -227,13 +227,13 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Headline Hero (Sub-nama) *
               </label>
               <Input
@@ -241,12 +241,12 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                 value={headline}
                 onChange={(e) => setHeadline(e.target.value)}
                 placeholder="Informatics Engineering Student | Web Fullstack & Game Developer"
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Tagline Singkat (1 Kalimat) *
               </label>
               <Input
@@ -254,24 +254,24 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
                 placeholder="Crafting scalable web systems and immersive interactive gaming experiences."
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Lokasi Domisili
               </label>
               <Input
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Palembang, Indonesia"
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Biografi Lengkap (About Me)
               </label>
               <textarea
@@ -279,71 +279,71 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Ceritakan latar belakang kampus UNSRI, minat mendalam di web development & game, serta tujuan karier..."
-                className="w-full rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 leading-relaxed"
+                className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 p-3.5 text-xs text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 leading-relaxed"
               />
             </div>
           </div>
 
           {/* Social Media Links Card */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-              <Github className="w-4 h-4 text-cyan-400" />
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center gap-2">
+              <Github className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               Tautan Media Sosial & Profil
             </h2>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">
               Kosongkan input jika belum ingin menampilkan link sosial tersebut di web publik.
             </p>
 
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1 flex items-center gap-1.5">
-                  <Github className="w-3.5 h-3.5 text-slate-400" />
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                  <Github className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                   GitHub URL
                 </label>
                 <Input
                   value={github}
                   onChange={(e) => setGithub(e.target.value)}
                   placeholder="https://github.com/ramadanrahmad"
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1 flex items-center gap-1.5">
-                  <Linkedin className="w-3.5 h-3.5 text-cyan-400" />
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                  <Linkedin className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                   LinkedIn URL
                 </label>
                 <Input
                   value={linkedin}
                   onChange={(e) => setLinkedin(e.target.value)}
                   placeholder="https://linkedin.com/in/username"
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1 flex items-center gap-1.5">
-                  <Instagram className="w-3.5 h-3.5 text-pink-400" />
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                  <Instagram className="w-3.5 h-3.5 text-pink-500 dark:text-pink-400" />
                   Instagram URL
                 </label>
                 <Input
                   value={instagram}
                   onChange={(e) => setInstagram(e.target.value)}
                   placeholder="https://instagram.com/username"
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1 flex items-center gap-1.5">
-                  <Gamepad2 className="w-3.5 h-3.5 text-red-400" />
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                  <Gamepad2 className="w-3.5 h-3.5 text-red-500 dark:text-red-400" />
                   itch.io URL
                 </label>
                 <Input
                   value={itchIo}
                   onChange={(e) => setItchIo(e.target.value)}
                   placeholder="https://username.itch.io"
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs"
                 />
               </div>
             </div>
@@ -353,18 +353,18 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
         {/* Kolom Kanan: Foto Profil, Upload CV, Status Open to Work (1 col) */}
         <div className="space-y-6">
           {/* Status Open to Work */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-emerald-400" />
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center gap-2">
+              <Briefcase className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               Status Ketersediaan
             </h2>
 
             <div className="flex items-center justify-between">
               <div>
-                <span className="block text-xs font-medium text-slate-200">
+                <span className="block text-xs font-medium text-slate-800 dark:text-slate-200">
                   Open to Work
                 </span>
-                <span className="text-[11px] text-slate-500">
+                <span className="text-[11px] text-slate-500 dark:text-slate-500">
                   Tampilkan badge ketersediaan di Hero
                 </span>
               </div>
@@ -376,7 +376,7 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
           </div>
 
           {/* Foto Profil */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
             <SingleImageUploader
               label="Foto Profil (Hero & About)"
               value={photoUrl}
@@ -386,29 +386,29 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
           </div>
 
           {/* Upload Resume / CV PDF */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-cyan-400" />
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               Dokumen Curriculum Vitae (CV)
             </h2>
 
             {cvUrl ? (
-              <div className="p-4 rounded-xl border border-slate-800 bg-slate-950/80 space-y-3">
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                     <FileText className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="font-medium text-xs text-slate-200 block truncate">
+                    <span className="font-medium text-xs text-slate-800 dark:text-slate-200 block truncate">
                       Resume-Rahmad-Ramadan.pdf
                     </span>
-                    <span className="text-[10px] text-emerald-400 font-mono">
+                    <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono font-medium">
                       ✓ Dokumen Terunggah
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2 border-t border-slate-800">
+                <div className="flex items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
                   <a
                     href={cvUrl}
                     target="_blank"
@@ -421,7 +421,7 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                       size="sm"
                       className="w-full gap-1.5 text-xs h-8"
                     >
-                      <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+                      <ExternalLink className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                       <span>Lihat PDF</span>
                     </Button>
                   </a>
@@ -439,7 +439,7 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
               </div>
             ) : (
               <div>
-                <label className="border-2 border-dashed border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-slate-950/40 hover:bg-slate-900/40 group block">
+                <label className="border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-slate-50/50 dark:bg-slate-950/40 hover:bg-slate-100/50 dark:hover:bg-slate-900/40 group block">
                   <input
                     type="file"
                     accept="application/pdf"
@@ -449,18 +449,18 @@ export function ProfileEditor({ initialProfile }: ProfileEditorProps) {
                   />
                   {isUploadingCv ? (
                     <div className="flex flex-col items-center py-2">
-                      <Loader2 className="w-6 h-6 text-cyan-400 animate-spin mb-2" />
-                      <span className="text-xs text-slate-400">
+                      <Loader2 className="w-6 h-6 text-cyan-600 dark:text-cyan-400 animate-spin mb-2" />
+                      <span className="text-xs text-slate-600 dark:text-slate-400">
                         Mengunggah dokumen PDF...
                       </span>
                     </div>
                   ) : (
                     <div className="flex flex-col items-center py-2">
-                      <UploadCloud className="w-6 h-6 text-slate-500 group-hover:text-cyan-400 mb-2 transition-colors" />
-                      <span className="text-xs font-medium text-slate-200">
+                      <UploadCloud className="w-6 h-6 text-slate-400 dark:text-slate-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 mb-2 transition-colors" />
+                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-200">
                         Upload Dokumen CV (PDF)
                       </span>
-                      <span className="text-[10px] text-slate-500 mt-0.5">
+                      <span className="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5">
                         Maksimal ukuran 10MB
                       </span>
                     </div>

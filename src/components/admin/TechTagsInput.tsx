@@ -60,16 +60,16 @@ export function TechTagsInput({ value, onChange, error }: TechTagsInputProps) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="block text-xs font-medium text-slate-300">
+        <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
           Tech Stack & Tags ({value.length} terpilih)
         </label>
-        <span className="text-[11px] text-slate-500">
+        <span className="text-[11px] text-slate-500 dark:text-slate-400">
           Tekan Enter atau klik Tambah
         </span>
       </div>
 
       {/* Selected Tags Display */}
-      <div className="flex flex-wrap gap-1.5 p-3 rounded-xl border border-slate-800 bg-slate-950/60 min-h-[46px] items-center">
+      <div className="flex flex-wrap gap-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60 min-h-[46px] items-center">
         {value.length === 0 ? (
           <span className="text-xs text-slate-500 italic">
             Belum ada tag yang dipilih. Pilih dari rekomendasi di bawah atau ketik tag baru.
@@ -85,7 +85,7 @@ export function TechTagsInput({ value, onChange, error }: TechTagsInputProps) {
               <button
                 type="button"
                 onClick={() => handleRemoveTag(tag)}
-                className="hover:bg-cyan-500/20 p-0.5 rounded-full text-cyan-300 hover:text-white transition-colors"
+                className="hover:bg-cyan-500/20 p-0.5 rounded-full text-cyan-600 dark:text-cyan-300 hover:text-cyan-900 dark:hover:text-white transition-colors"
               >
                 <X className="w-3 h-3" />
               </button>
@@ -101,7 +101,7 @@ export function TechTagsInput({ value, onChange, error }: TechTagsInputProps) {
           value={customTag}
           onChange={(e) => setCustomTag(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="text-xs h-9 bg-slate-950/80 border-slate-800"
+          className="text-xs h-9 bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
         />
         <Button
           type="button"
@@ -117,8 +117,8 @@ export function TechTagsInput({ value, onChange, error }: TechTagsInputProps) {
 
       {/* Presets rekomendasi cepat */}
       <div className="pt-1">
-        <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-2 font-medium">
-          <Sparkles className="w-3 h-3 text-cyan-400" />
+        <div className="flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-400 mb-2 font-medium">
+          <Sparkles className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
           <span>Pilihan Cepat (Klik untuk menambah):</span>
         </div>
         <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
@@ -133,8 +133,8 @@ export function TechTagsInput({ value, onChange, error }: TechTagsInputProps) {
                 }
                 className={`text-[11px] px-2.5 py-1 rounded-md border transition-all ${
                   isSelected
-                    ? "bg-cyan-500/20 border-cyan-500/40 text-cyan-300 font-medium"
-                    : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                    ? "bg-cyan-500/20 border-cyan-500/40 text-cyan-700 dark:text-cyan-300 font-medium"
+                    : "bg-slate-100 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-700"
                 }`}
               >
                 {isSelected ? `✓ ${preset}` : `+ ${preset}`}

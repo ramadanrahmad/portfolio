@@ -135,13 +135,13 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
   return (
     <div className="space-y-6">
       {/* Header & Tombol Buat */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-            <FolderGit2 className="w-6 h-6 text-cyan-400" />
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <FolderGit2 className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             Manajemen Proyek
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
             Kelola {projects.length} proyek, atur status draft/publikasi, dan urutan tampil.
           </p>
         </div>
@@ -155,16 +155,16 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
       </div>
 
       {/* Kontrol Filter & Pencarian */}
-      <div className="p-4 rounded-2xl glass-card border border-slate-800 space-y-4">
+      <div className="p-4 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
         <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
           {/* Search Bar */}
           <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <Input
               placeholder="Cari judul, tag teknologi, atau slug..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 bg-slate-950/80 border-slate-800 text-xs h-9"
+              className="pl-9 bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs h-9"
             />
           </div>
 
@@ -173,7 +173,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="h-9 px-3 rounded-lg border border-slate-800 bg-slate-950/80 text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
+              className="h-9 px-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500"
             >
               <option value="all">Semua Status</option>
               <option value="published">Hanya Published</option>
@@ -183,7 +183,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="h-9 px-3 rounded-lg border border-slate-800 bg-slate-950/80 text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
+              className="h-9 px-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500"
             >
               <option value="sort_order">Urutkan: Prioritas (Sort Order)</option>
               <option value="date_desc">Urutkan: Tanggal Terbaru</option>
@@ -193,7 +193,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
         </div>
 
         {/* Tab Kategori */}
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800/80">
+        <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/80">
           {[
             { id: "all", label: "Semua Kategori", count: categoryCounts.all },
             { id: "game", label: "Game Dev", count: categoryCounts.game },
@@ -206,12 +206,12 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
               onClick={() => setSelectedCategory(cat.id)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 selectedCategory === cat.id
-                  ? "bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 shadow-sm shadow-cyan-500/10"
-                  : "bg-slate-900/60 border border-slate-800/80 text-slate-400 hover:text-slate-200"
+                  ? "bg-cyan-50 dark:bg-cyan-500/15 border border-cyan-200 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-300 shadow-sm"
+                  : "bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               <span>{cat.label}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400">
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400 font-mono">
                 {cat.count}
               </span>
             </button>
@@ -220,10 +220,10 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
       </div>
 
       {/* Tabel Proyek */}
-      <div className="rounded-2xl glass-card border border-slate-800 overflow-hidden shadow-xl">
+      <div className="rounded-2xl glass-card border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950/90 text-slate-400 font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-950/90 text-slate-600 dark:text-slate-400 font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="py-3.5 px-4 w-12">#</th>
                 <th className="py-3.5 px-4">Proyek</th>
@@ -234,12 +234,12 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
                 <th className="py-3.5 px-4 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
               {filteredProjects.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="py-12 text-center text-slate-500">
-                    <FolderGit2 className="w-10 h-10 mx-auto text-slate-600 mb-2" />
-                    <p className="text-sm font-medium text-slate-300">
+                    <FolderGit2 className="w-10 h-10 mx-auto text-slate-400 dark:text-slate-600 mb-2" />
+                    <p className="text-sm font-medium text-slate-800 dark:text-slate-300">
                       Tidak ada proyek yang sesuai filter.
                     </p>
                     <p className="text-xs text-slate-500 mt-1">
@@ -251,7 +251,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
                 filteredProjects.map((project, index) => (
                   <tr
                     key={project.id}
-                    className="hover:bg-slate-900/40 transition-colors group"
+                    className="hover:bg-slate-50/80 dark:hover:bg-slate-900/40 transition-colors group"
                   >
                     {/* Sort Order */}
                     <td className="py-3.5 px-4 text-slate-500 font-mono text-center">
@@ -261,7 +261,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
                     {/* Thumbnail & Title */}
                     <td className="py-3.5 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-8 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 shrink-0 relative">
+                        <div className="w-12 h-8 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shrink-0 relative">
                           {project.thumbnail_url ? (
                             <Image
                               src={project.thumbnail_url}
@@ -270,7 +270,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
                               className="object-cover"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-slate-600">
+                            <div className="w-full h-full flex items-center justify-center text-slate-400 dark:text-slate-600">
                               <FolderGit2 className="w-4 h-4" />
                             </div>
                           )}
@@ -278,7 +278,7 @@ export function ProjectsTable({ initialProjects }: ProjectsTableProps) {
                         <div className="min-w-0">
                           <Link
                             href={`/admin/projects/${project.id}`}
-                            className="font-semibold text-slate-100 hover:text-cyan-400 transition-colors truncate block"
+                            className="font-semibold text-slate-900 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors truncate block"
                           >
                             {project.title}
                           </Link>

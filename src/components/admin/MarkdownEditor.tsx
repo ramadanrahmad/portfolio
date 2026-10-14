@@ -61,18 +61,18 @@ export function MarkdownEditor({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-xs font-medium text-slate-300">
+        <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
           {label}
         </label>
         {/* Tab Switcher */}
-        <div className="flex rounded-lg bg-slate-900 border border-slate-800 p-0.5 text-xs">
+        <div className="flex rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-0.5 text-xs">
           <button
             type="button"
             onClick={() => setActiveTab("write")}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
               activeTab === "write"
-                ? "bg-cyan-500/20 text-cyan-300 font-medium border border-cyan-500/30"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 font-medium border border-cyan-500/30"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <Edit3 className="w-3.5 h-3.5" />
@@ -83,8 +83,8 @@ export function MarkdownEditor({
             onClick={() => setActiveTab("preview")}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
               activeTab === "preview"
-                ? "bg-cyan-500/20 text-cyan-300 font-medium border border-cyan-500/30"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 font-medium border border-cyan-500/30"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <Eye className="w-3.5 h-3.5" />
@@ -93,14 +93,14 @@ export function MarkdownEditor({
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-800 bg-slate-950/80 overflow-hidden">
+      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 overflow-hidden">
         {/* Toolbar (hanya aktif di tab write) */}
         {activeTab === "write" && (
-          <div className="flex flex-wrap items-center gap-1 p-2 border-b border-slate-800 bg-slate-900/60">
+          <div className="flex flex-wrap items-center gap-1 p-2 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
             <button
               type="button"
               onClick={() => insertSnippet("**", "**")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Tebal (Bold)"
             >
               <Bold className="w-3.5 h-3.5" />
@@ -108,16 +108,16 @@ export function MarkdownEditor({
             <button
               type="button"
               onClick={() => insertSnippet("*", "*")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Miring (Italic)"
             >
               <Italic className="w-3.5 h-3.5" />
             </button>
-            <div className="w-[1px] h-4 bg-slate-800 mx-1" />
+            <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-800 mx-1" />
             <button
               type="button"
               onClick={() => insertSnippet("## ")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Heading 2"
             >
               <Heading2 className="w-3.5 h-3.5" />
@@ -125,16 +125,16 @@ export function MarkdownEditor({
             <button
               type="button"
               onClick={() => insertSnippet("### ")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Heading 3"
             >
               <Heading3 className="w-3.5 h-3.5" />
             </button>
-            <div className="w-[1px] h-4 bg-slate-800 mx-1" />
+            <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-800 mx-1" />
             <button
               type="button"
               onClick={() => insertSnippet("- ")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Daftar Poin (List)"
             >
               <List className="w-3.5 h-3.5" />
@@ -142,16 +142,16 @@ export function MarkdownEditor({
             <button
               type="button"
               onClick={() => insertSnippet("1. ")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Daftar Nomor"
             >
               <ListOrdered className="w-3.5 h-3.5" />
             </button>
-            <div className="w-[1px] h-4 bg-slate-800 mx-1" />
+            <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-800 mx-1" />
             <button
               type="button"
               onClick={() => insertSnippet("```ts\n", "\n```")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Blok Kode"
             >
               <Code className="w-3.5 h-3.5" />
@@ -159,7 +159,7 @@ export function MarkdownEditor({
             <button
               type="button"
               onClick={() => insertSnippet("> ")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Kutipan (Blockquote)"
             >
               <Quote className="w-3.5 h-3.5" />
@@ -167,7 +167,7 @@ export function MarkdownEditor({
             <button
               type="button"
               onClick={() => insertSnippet("[", "](https://example.com)")}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"
+              className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               title="Tautan Link"
             >
               <LinkIcon className="w-3.5 h-3.5" />
@@ -182,57 +182,57 @@ export function MarkdownEditor({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder="# Judul Proyek&#10;&#10;Jelaskan latar belakang, fitur, arsitektur teknis, dan tantangan yang diselesaikan..."
-            className={`w-full p-4 bg-transparent text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none font-mono resize-y ${minHeight}`}
+            className={`w-full p-4 bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none font-mono resize-y ${minHeight}`}
           />
         ) : (
           <div
-            className={`p-5 prose prose-invert max-w-none text-slate-200 text-sm overflow-y-auto ${minHeight}`}
+            className={`p-5 prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm overflow-y-auto ${minHeight}`}
           >
             {value.trim() ? (
               <ReactMarkdown
                 components={{
                   h1: ({ children }) => (
-                    <h1 className="text-xl font-bold text-white border-b border-slate-800 pb-2 mb-3 mt-4">
+                    <h1 className="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-3 mt-4">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-lg font-bold text-cyan-300 mt-4 mb-2">
+                    <h2 className="text-lg font-bold text-cyan-600 dark:text-cyan-300 mt-4 mb-2">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-base font-semibold text-indigo-300 mt-3 mb-1.5">
+                    <h3 className="text-base font-semibold text-indigo-600 dark:text-indigo-300 mt-3 mb-1.5">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-slate-300 leading-relaxed mb-3">
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside space-y-1 my-2 text-slate-300">
+                    <ul className="list-disc list-inside space-y-1 my-2 text-slate-700 dark:text-slate-300">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside space-y-1 my-2 text-slate-300">
+                    <ol className="list-decimal list-inside space-y-1 my-2 text-slate-700 dark:text-slate-300">
                       {children}
                     </ol>
                   ),
                   code: ({ children }) => (
-                    <code className="bg-slate-900 border border-slate-800 px-1.5 py-0.5 rounded text-cyan-300 font-mono text-xs">
+                    <code className="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded text-cyan-700 dark:text-cyan-300 font-mono text-xs">
                       {children}
                     </code>
                   ),
                   pre: ({ children }) => (
-                    <pre className="bg-slate-900/90 border border-slate-800 p-3 rounded-lg overflow-x-auto text-xs my-3 text-cyan-300">
+                    <pre className="bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-3 rounded-lg overflow-x-auto text-xs my-3 text-cyan-700 dark:text-cyan-300">
                       {children}
                     </pre>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-2 border-cyan-500 pl-3 italic text-slate-400 my-2">
+                    <blockquote className="border-l-2 border-cyan-500 pl-3 italic text-slate-600 dark:text-slate-400 my-2">
                       {children}
                     </blockquote>
                   ),
@@ -241,7 +241,7 @@ export function MarkdownEditor({
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
+                      className="text-cyan-600 dark:text-cyan-400 underline underline-offset-4 hover:text-cyan-700 dark:hover:text-cyan-300"
                     >
                       {children}
                     </a>

@@ -198,7 +198,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-8 pb-16">
       {/* Top Bar Form */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl glass-card border border-slate-800 sticky top-2 z-30 shadow-xl backdrop-blur-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 sticky top-2 z-30 shadow-xl backdrop-blur-xl">
         <div className="flex items-center gap-3">
           <Link href="/admin/projects">
             <Button
@@ -212,14 +212,14 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             </Button>
           </Link>
           <div>
-            <h1 className="text-lg font-bold text-white">
+            <h1 className="text-lg font-bold text-slate-900 dark:text-white">
               {mode === "create" ? "Tambah Proyek Baru" : `Edit Proyek: ${title}`}
             </h1>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
               {status === "published" ? (
-                <span className="text-emerald-400 font-medium">● Publikasi Aktif</span>
+                <span className="text-emerald-500 dark:text-emerald-400 font-medium">● Publikasi Aktif</span>
               ) : (
-                <span className="text-amber-400 font-medium">● Draft Privat</span>
+                <span className="text-amber-500 dark:text-amber-400 font-medium">● Draft Privat</span>
               )}
             </p>
           </div>
@@ -262,13 +262,13 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
 
       {/* Alert Messages */}
       {errorMessage && (
-        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 dark:text-red-400 text-xs flex items-center gap-2.5">
           <AlertTriangle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
       {successMessage && (
-        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2.5">
+        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-300 text-xs flex items-center gap-2.5">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{successMessage}</span>
         </div>
@@ -279,13 +279,13 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
         {/* Kolom Kiri & Tengah: Informasi Utama Proyek (2 Cols) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Box 1: Judul, Slug, Kategori, Ringkasan */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800/80 pb-3">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800/80 pb-3">
               Informasi Umum
             </h2>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Judul Proyek *
               </label>
               <Input
@@ -293,20 +293,20 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                 placeholder="Contoh: Chronicles of Sriwijaya"
                 value={title}
                 onChange={(e) => handleTitleChange(e.target.value)}
-                className="bg-slate-950/80 border-slate-800"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
               />
             </div>
 
             {/* Slug URL */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-medium text-slate-300">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
                   Slug URL (Unik) *
                 </label>
                 <button
                   type="button"
                   onClick={() => setIsSlugLocked(!isSlugLocked)}
-                  className="text-[11px] text-cyan-400 flex items-center gap-1 hover:underline"
+                  className="text-[11px] text-cyan-600 dark:text-cyan-400 flex items-center gap-1 hover:underline"
                 >
                   {isSlugLocked ? (
                     <>
@@ -322,7 +322,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                 </button>
               </div>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-500">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 dark:text-slate-500">
                   /projects/
                 </span>
                 <Input
@@ -334,14 +334,14 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                     setIsDirty(true);
                   }}
                   disabled={isSlugLocked}
-                  className="pl-20 font-mono text-xs bg-slate-950/80 border-slate-800"
+                  className="pl-20 font-mono text-xs bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white"
                 />
               </div>
             </div>
 
             {/* Kategori Proyek */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Kategori Proyek *
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -363,8 +363,8 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       }}
                       className={`flex items-center justify-center gap-2 p-3 rounded-xl border text-xs font-medium transition-all ${
                         isSelected
-                          ? "bg-cyan-500/15 border-cyan-500/40 text-cyan-300 shadow-sm shadow-cyan-500/10"
-                          : "bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                          ? "bg-cyan-500/15 border-cyan-500/40 text-cyan-700 dark:text-cyan-300 shadow-sm shadow-cyan-500/10"
+                          : "bg-slate-100 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-700"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
@@ -378,10 +378,10 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             {/* Deskripsi Singkat */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-medium text-slate-300">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
                   Deskripsi Singkat (Ringkasan untuk kartu) *
                 </label>
-                <span className="text-[10px] text-slate-500">
+                <span className="text-[10px] text-slate-400 dark:text-slate-500">
                   {shortDescription.length}/300
                 </span>
               </div>
@@ -395,22 +395,22 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setShortDescription(e.target.value);
                   setIsDirty(true);
                 }}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950/80 p-3 text-xs text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 p-3 text-xs text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
               />
             </div>
           </div>
 
           {/* Box 2: Detail Spesifik Kategori (Game / Web) */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800/80 pb-3 flex items-center gap-2">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800/80 pb-3 flex items-center gap-2">
               {category === "game" ? (
                 <>
-                  <Gamepad2 className="w-4 h-4 text-cyan-400" />
+                  <Gamepad2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                   Spesifikasi Game
                 </>
               ) : (
                 <>
-                  <Globe className="w-4 h-4 text-indigo-400" />
+                  <Globe className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                   Spesifikasi Aplikasi Web
                 </>
               )}
@@ -419,7 +419,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             {category === "game" ? (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Game Engine
                   </label>
                   <Input
@@ -429,11 +429,11 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setGameEngine(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Genre Game
                   </label>
                   <Input
@@ -443,11 +443,11 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setGameGenre(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Platform Target
                   </label>
                   <Input
@@ -464,7 +464,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Frontend Stack
                   </label>
                   <Input
@@ -474,11 +474,11 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setWebFrontend(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Backend & Database
                   </label>
                   <Input
@@ -488,7 +488,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setWebBackend(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
               </div>
@@ -496,7 +496,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </div>
 
           {/* Box 3: Tech Tags Input */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
             <TechTagsInput
               value={techTags}
               onChange={(tags) => {
@@ -507,7 +507,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </div>
 
           {/* Box 4: Markdown Editor */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
             <MarkdownEditor
               label="Dokumentasi Lengkap Proyek (Markdown) *"
               value={descriptionMd}
@@ -519,7 +519,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </div>
 
           {/* Box 5: Galeri Gambar Proyek */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
             <MultiImageUploader
               label="Galeri Screenshot Proyek"
               values={gallery}
@@ -534,18 +534,18 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
         {/* Kolom Kanan: Media, Status, Tautan, & Catatan Privat (1 Col) */}
         <div className="space-y-6">
           {/* Status & Visibilitas */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800/80 pb-3">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800/80 pb-3">
               Status & Visibilitas
             </h2>
 
             {/* Toggle Published */}
             <div className="flex items-center justify-between">
               <div>
-                <span className="block text-xs font-medium text-slate-200">
+                <span className="block text-xs font-medium text-slate-800 dark:text-slate-200">
                   Terbitkan Proyek
                 </span>
-                <span className="text-[11px] text-slate-500">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">
                   Tampil untuk pengunjung di web publik
                 </span>
               </div>
@@ -559,12 +559,12 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             </div>
 
             {/* Toggle Featured */}
-            <div className="flex items-center justify-between pt-2 border-t border-slate-800/60">
+            <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800/60">
               <div>
-                <span className="block text-xs font-medium text-slate-200">
+                <span className="block text-xs font-medium text-slate-800 dark:text-slate-200">
                   Featured Project ⭐
                 </span>
-                <span className="text-[11px] text-slate-500">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">
                   Tampilkan di grid utama Homepage
                 </span>
               </div>
@@ -578,8 +578,8 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
             </div>
 
             {/* Urutan Tampil (Sort Order) */}
-            <div className="pt-2 border-t border-slate-800/60">
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+            <div className="pt-2 border-t border-slate-200 dark:border-slate-800/60">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Prioritas Urutan Tampil
               </label>
               <Input
@@ -589,13 +589,13 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setSortOrder(Number(e.target.value));
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
           </div>
 
           {/* Thumbnail Utama */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
             <SingleImageUploader
               label="Thumbnail Utama Proyek"
               value={thumbnailUrl}
@@ -607,13 +607,13 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </div>
 
           {/* Peran & Durasi */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800/80 pb-3">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800/80 pb-3">
               Peran & Periode
             </h2>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Peran Saya
               </label>
               <Input
@@ -623,12 +623,12 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setRole(e.target.value);
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Ukuran Tim
               </label>
               <Input
@@ -638,13 +638,13 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setTeamSize(e.target.value);
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-[11px] font-medium text-slate-300 mb-1">
+                <label className="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Mulai
                 </label>
                 <Input
@@ -654,11 +654,11 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                     setStartDate(e.target.value);
                     setIsDirty(true);
                   }}
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-medium text-slate-300 mb-1">
+                <label className="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Selesai
                 </label>
                 <Input
@@ -668,20 +668,20 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                     setEndDate(e.target.value);
                     setIsDirty(true);
                   }}
-                  className="bg-slate-950/80 border-slate-800 text-xs"
+                  className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                 />
               </div>
             </div>
           </div>
 
           {/* Tautan & URL Proyek */}
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800/80 pb-3">
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800/80 pb-3">
               Tautan & Integrasi
             </h2>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Live Demo / Web Link
               </label>
               <Input
@@ -691,12 +691,12 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setDemoUrl(e.target.value);
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Repository GitHub
               </label>
               <Input
@@ -706,12 +706,12 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setRepoUrl(e.target.value);
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Video Demo / YouTube Embed
               </label>
               <Input
@@ -721,14 +721,14 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                   setVideoUrl(e.target.value);
                   setIsDirty(true);
                 }}
-                className="bg-slate-950/80 border-slate-800 text-xs"
+                className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
               />
             </div>
 
             {category === "game" && (
               <>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     itch.io / Store Page
                   </label>
                   <Input
@@ -738,11 +738,11 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setStoreUrl(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Playable Web Game Embed URL
                   </label>
                   <Input
@@ -752,7 +752,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                       setEmbedUrl(e.target.value);
                       setIsDirty(true);
                     }}
-                    className="bg-slate-950/80 border-slate-800 text-xs"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs"
                   />
                 </div>
               </>
@@ -760,15 +760,15 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </div>
 
           {/* Catatan Privat Admin (Tabel project_notes) */}
-          <div className="glass-card rounded-2xl p-6 border border-cyan-500/30 bg-cyan-950/10 space-y-3">
-            <div className="flex items-center gap-2 text-cyan-400">
+          <div className="glass-card rounded-2xl p-6 border border-cyan-500/30 bg-cyan-500/5 dark:bg-cyan-950/10 space-y-3">
+            <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
               <Lock className="w-4 h-4" />
-              <h2 className="text-sm font-semibold text-white">
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">
                 Catatan Privat Admin
               </h2>
             </div>
-            <p className="text-[11px] text-slate-400">
-              Tersimpan di tabel terpisah (<code className="text-cyan-400">project_notes</code>) dengan proteksi RLS ketat. Tidak akan pernah terlihat oleh publik atau recruiter.
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">
+              Tersimpan di tabel terpisah (<code className="text-cyan-600 dark:text-cyan-400">project_notes</code>) dengan proteksi RLS ketat. Tidak akan pernah terlihat oleh publik atau recruiter.
             </p>
             <textarea
               rows={4}
@@ -778,7 +778,7 @@ export function ProjectForm({ initialData, mode }: ProjectFormProps) {
                 setNotes(e.target.value);
                 setIsDirty(true);
               }}
-              className="w-full rounded-lg border border-slate-800 bg-slate-950/90 p-3 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
+              className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/90 p-3 text-xs text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
             />
           </div>
         </div>

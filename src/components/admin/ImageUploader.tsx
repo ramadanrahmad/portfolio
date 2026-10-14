@@ -53,12 +53,12 @@ export function SingleImageUploader({
 
   return (
     <div className="space-y-2">
-      <label className="block text-xs font-medium text-slate-300">
+      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
         {label}
       </label>
 
       {value ? (
-        <div className="relative group rounded-xl overflow-hidden border border-slate-700 bg-slate-950">
+        <div className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950">
           <div
             className={`relative w-full ${
               aspectRatio === "square" ? "aspect-square" : "aspect-video"
@@ -87,7 +87,7 @@ export function SingleImageUploader({
       ) : (
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="border-2 border-dashed border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-slate-950/40 hover:bg-slate-900/40 group"
+          className="border-2 border-dashed border-slate-300 dark:border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-slate-50/70 dark:bg-slate-950/40 hover:bg-slate-100 dark:hover:bg-slate-900/40 group"
         >
           <input
             ref={fileInputRef}
@@ -99,20 +99,20 @@ export function SingleImageUploader({
           />
           {isUploading ? (
             <div className="flex flex-col items-center py-4">
-              <Loader2 className="w-8 h-8 text-cyan-400 animate-spin mb-2" />
-              <span className="text-xs text-slate-400">
+              <Loader2 className="w-8 h-8 text-cyan-500 dark:text-cyan-400 animate-spin mb-2" />
+              <span className="text-xs text-slate-500 dark:text-slate-400">
                 Mengompresi dan mengunggah gambar...
               </span>
             </div>
           ) : (
             <div className="flex flex-col items-center py-3">
-              <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-colors mb-3">
+              <div className="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-cyan-500 group-hover:border-cyan-500/30 transition-colors mb-3">
                 <UploadCloud className="w-6 h-6" />
               </div>
-              <p className="text-xs font-medium text-slate-200">
+              <p className="text-xs font-medium text-slate-800 dark:text-slate-200">
                 Klik untuk upload thumbnail
               </p>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
                 PNG, JPG, WebP (Otomatis dikompres & diacak nama filenya)
               </p>
             </div>
@@ -121,7 +121,7 @@ export function SingleImageUploader({
       )}
 
       {errorMessage && (
-        <p className="text-xs text-red-400 mt-1">{errorMessage}</p>
+        <p className="text-xs text-red-500 dark:text-red-400 mt-1">{errorMessage}</p>
       )}
     </div>
   );
@@ -181,10 +181,10 @@ export function MultiImageUploader({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="block text-xs font-medium text-slate-300">
+        <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
           {label} ({values.length} foto)
         </label>
-        <span className="text-[11px] text-slate-500">
+        <span className="text-[11px] text-slate-500 dark:text-slate-400">
           Dapat memilih banyak gambar sekaligus
         </span>
       </div>
@@ -193,7 +193,7 @@ export function MultiImageUploader({
         {values.map((url, index) => (
           <div
             key={url + index}
-            className="relative group rounded-xl overflow-hidden border border-slate-800 bg-slate-950 aspect-video"
+            className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 aspect-video"
           >
             <Image
               src={url}
@@ -217,7 +217,7 @@ export function MultiImageUploader({
         {/* Tombol Tambah Gambar */}
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="aspect-video border-2 border-dashed border-slate-800 hover:border-cyan-500/40 rounded-xl flex flex-col items-center justify-center cursor-pointer bg-slate-950/40 hover:bg-slate-900/40 text-slate-400 hover:text-cyan-400 transition-all group"
+          className="aspect-video border-2 border-dashed border-slate-300 dark:border-slate-800 hover:border-cyan-500/40 rounded-xl flex flex-col items-center justify-center cursor-pointer bg-slate-50/70 dark:bg-slate-950/40 hover:bg-slate-100 dark:hover:bg-slate-900/40 text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all group"
         >
           <input
             ref={fileInputRef}
@@ -229,10 +229,10 @@ export function MultiImageUploader({
             disabled={isUploading}
           />
           {isUploading ? (
-            <Loader2 className="w-6 h-6 animate-spin text-cyan-400" />
+            <Loader2 className="w-6 h-6 animate-spin text-cyan-500 dark:text-cyan-400" />
           ) : (
             <>
-              <Plus className="w-6 h-6 mb-1 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+              <Plus className="w-6 h-6 mb-1 text-slate-400 dark:text-slate-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors" />
               <span className="text-[11px] font-medium">Tambah Foto</span>
             </>
           )}

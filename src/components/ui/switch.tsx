@@ -30,7 +30,7 @@ export function Switch({
       className={cn(
         "relative inline-flex shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 disabled:cursor-not-allowed disabled:opacity-50",
         isSm ? "h-5 w-9" : "h-6 w-11",
-        checked ? "bg-cyan-500 shadow-sm shadow-cyan-500/30" : "bg-slate-800 border border-slate-700",
+        checked ? "bg-cyan-500 shadow-sm shadow-cyan-500/30" : "bg-slate-300 dark:bg-slate-800 border border-slate-300 dark:border-slate-700",
         className
       )}
     >
