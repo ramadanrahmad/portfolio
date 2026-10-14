@@ -73,14 +73,14 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="mb-12 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-400 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-600 dark:text-cyan-400 mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Tech Arsenal</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Skills & Technologies
           </h2>
-          <p className="text-sm text-slate-400 mt-2 max-w-lg">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-lg">
             Languages, frameworks, database systems, and game engines I work with on daily builds.
           </p>
         </div>
@@ -90,7 +90,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           {groupedSkills.map(({ group, meta, items }) => (
             <div
               key={group}
-              className="glass-card rounded-2xl p-6 border border-slate-800/80 flex flex-col justify-between hover:border-slate-700 transition-all group"
+              className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-slate-300 dark:hover:border-slate-700 transition-all group shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -103,22 +103,22 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                     {items.length} skills
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-1">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">
                   {meta.label}
                 </h3>
-                <p className="text-xs text-slate-400 mb-4">{meta.desc}</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mb-4">{meta.desc}</p>
               </div>
 
               {/* Items Chip Grid */}
-              <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-800/60">
+              <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-200 dark:border-slate-800/60">
                 {items.map((skill) => (
                   <div
                     key={skill.id}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 text-slate-200 hover:text-white transition-all group/item shadow-sm"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all group/item shadow-sm"
                   >
                     <DynamicIcon
                       name={skill.icon}
-                      className="w-4 h-4 text-cyan-400 group-hover/item:scale-110 transition-transform"
+                      className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover/item:scale-110 transition-transform"
                     />
                     <span className="text-xs font-medium">{skill.name}</span>
                   </div>

@@ -42,7 +42,7 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-bold text-white flex items-center gap-2">
+      <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
         <span>Project Gallery</span>
         <span className="text-xs font-mono font-normal text-slate-500">
           ({images.length} screenshots)
@@ -55,7 +55,7 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
           <div
             key={imgUrl + index}
             onClick={() => setSelectedIndex(index)}
-            className="group relative aspect-video rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80 cursor-pointer hover:border-cyan-500/50 transition-all shadow-md"
+            className="group relative aspect-video rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 cursor-pointer hover:border-cyan-500/50 transition-all shadow-md"
           >
             <Image
               src={imgUrl}

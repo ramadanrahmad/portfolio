@@ -63,7 +63,7 @@ export default async function HomePage() {
   const testimonials = (testimonialsData as Testimonial[]) || [];
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 scroll-smooth">
+    <div className="min-h-screen flex flex-col justify-between bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-700 dark:selection:text-cyan-300 scroll-smooth transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1 w-full">

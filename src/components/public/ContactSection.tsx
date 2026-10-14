@@ -76,14 +76,14 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="mb-12 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-400 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-600 dark:text-cyan-400 mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Direct Inquiries</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Get in Touch
           </h2>
-          <p className="text-sm text-slate-400 mt-2 max-w-lg">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-lg">
             Whether you have a job opportunity, a project proposal, or just want to discuss tech, feel free to drop a message!
           </p>
         </div>
@@ -91,16 +91,16 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
         {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Form (7 cols) */}
-          <div className="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-slate-800">
+          <div className="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
             {isSuccess ? (
               <div className="py-10 text-center space-y-3 animate-in fade-in zoom-in-95 duration-200">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/10">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-500 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/10">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   Message Sent Successfully!
                 </h3>
-                <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
                   Thank you for reaching out. Your message has landed directly in Rahmad's inbox. I will reply to you as soon as possible.
                 </p>
                 <div className="pt-4">
@@ -119,7 +119,7 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Error Alert */}
                 {errorMessage && (
-                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2.5">
+                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 dark:text-red-400 text-xs flex items-center gap-2.5">
                     <AlertTriangle className="w-4 h-4 shrink-0" />
                     <span>{errorMessage}</span>
                   </div>
@@ -137,7 +137,7 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                 />
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Your Name *
                   </label>
                   <Input
@@ -145,12 +145,12 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     placeholder="John Doe"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-slate-950/80 border-slate-800 text-xs h-10"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs h-10"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Your Email Address *
                   </label>
                   <Input
@@ -159,12 +159,12 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     placeholder="john@example.com"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
-                    className="bg-slate-950/80 border-slate-800 text-xs h-10"
+                    className="bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-xs h-10"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                     Your Message *
                   </label>
                   <textarea
@@ -173,7 +173,7 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     placeholder="Hello Rahmad, I came across your portfolio and would like to talk about..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 text-xs text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 resize-y"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 p-3.5 text-xs text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 resize-y"
                   />
                 </div>
 
@@ -201,15 +201,15 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
 
           {/* Right Social & Direct Contact Info (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
-              <h3 className="text-sm font-semibold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-cyan-400" />
+            <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center gap-2">
+                <Mail className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 Direct Contact
               </h3>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
@@ -218,7 +218,7 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     </span>
                     <a
                       href={`mailto:${directEmail}`}
-                      className="text-xs font-medium text-white hover:text-cyan-300 transition-colors"
+                      className="text-xs font-medium text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
                     >
                       {directEmail}
                     </a>
@@ -226,14 +226,14 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-mono text-slate-500 block">
                       Response Time
                     </span>
-                    <span className="text-xs font-medium text-slate-200">
+                    <span className="text-xs font-medium text-slate-700 dark:text-slate-200">
                       Usually within 24 hours
                     </span>
                   </div>
@@ -242,8 +242,8 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
             </div>
 
             {/* Social Channels */}
-            <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-3">
-              <h3 className="text-sm font-semibold text-white border-b border-slate-800 pb-3">
+            <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3">
                 Social Profiles
               </h3>
 
@@ -253,9 +253,9 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-cyan-300 transition-all flex items-center gap-2.5"
+                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all flex items-center gap-2.5 shadow-sm"
                   >
-                    <Github className="w-4 h-4 text-slate-400" />
+                    <Github className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                     <span className="font-medium">GitHub</span>
                   </a>
                 )}
@@ -264,9 +264,9 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     href={socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-cyan-300 transition-all flex items-center gap-2.5"
+                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all flex items-center gap-2.5 shadow-sm"
                   >
-                    <Linkedin className="w-4 h-4 text-cyan-400" />
+                    <Linkedin className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     <span className="font-medium">LinkedIn</span>
                   </a>
                 )}
@@ -275,9 +275,9 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     href={socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-pink-400 transition-all flex items-center gap-2.5"
+                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all flex items-center gap-2.5 shadow-sm"
                   >
-                    <Instagram className="w-4 h-4 text-pink-400" />
+                    <Instagram className="w-4 h-4 text-pink-500 dark:text-pink-400" />
                     <span className="font-medium">Instagram</span>
                   </a>
                 )}
@@ -286,9 +286,9 @@ export function ContactSection({ socialLinks, email }: ContactSectionProps) {
                     href={socialLinks.itch_io}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-red-400 transition-all flex items-center gap-2.5"
+                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 transition-all flex items-center gap-2.5 shadow-sm"
                   >
-                    <Gamepad2 className="w-4 h-4 text-red-400" />
+                    <Gamepad2 className="w-4 h-4 text-red-500 dark:text-red-400" />
                     <span className="font-medium">itch.io</span>
                   </a>
                 )}

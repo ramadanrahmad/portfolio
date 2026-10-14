@@ -36,20 +36,20 @@ export function FeaturedProjectsSection({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-400 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-600 dark:text-cyan-400 mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Handpicked Work</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Featured Projects
             </h2>
-            <p className="text-sm text-slate-400 mt-2 max-w-lg">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-lg">
               Explore key games and fullstack web platforms I designed, engineered, and shipped.
             </p>
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md self-start md:self-auto">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 backdrop-blur-md self-start md:self-auto shadow-sm">
             {[
               { id: "all", label: "All" },
               { id: "game", label: "Game Dev" },
@@ -62,7 +62,7 @@ export function FeaturedProjectsSection({
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   activeCategory === cat.id
                     ? "bg-cyan-500 text-slate-950 font-semibold shadow-sm shadow-cyan-500/30"
-                    : "text-slate-400 hover:text-slate-200"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
                 }`}
               >
                 {cat.label}

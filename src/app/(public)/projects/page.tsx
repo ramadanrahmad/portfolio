@@ -34,20 +34,20 @@ export default async function ProjectsPage() {
   const projects = (projectsData as Project[]) || [];
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#07090e]">
+    <div className="min-h-screen flex flex-col justify-between bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       <Navbar />
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-24 w-full">
         {/* Header */}
         <div className="mb-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-400 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-semibold text-cyan-700 dark:text-cyan-400 mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Complete Archive</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             All Projects
           </h1>
-          <p className="text-sm sm:text-base text-slate-400 mt-2 max-w-2xl">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
             Explore games, fullstack web architectures, APIs, and client projects built with modern technologies.
           </p>
         </div>

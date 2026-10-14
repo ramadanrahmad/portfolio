@@ -61,19 +61,19 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
             {/* Headline & Name */}
             <div>
-              <p className="text-sm font-semibold tracking-wider text-cyan-400 uppercase font-mono mb-2">
+              <p className="text-sm font-semibold tracking-wider text-cyan-600 dark:text-cyan-400 uppercase font-mono mb-2">
                 Hello, I am
               </p>
-              <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+              <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
                 {name}
               </h1>
-              <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent mt-2">
+              <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 dark:from-cyan-300 dark:via-indigo-300 dark:to-purple-300 bg-clip-text text-transparent mt-2">
                 {headline}
               </p>
             </div>
 
             {/* Tagline */}
-            <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               {tagline}
             </p>
 
@@ -88,15 +88,15 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
               {cvUrl ? (
                 <a href={cvUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="lg" className="gap-2 text-sm">
-                    <FileDown className="w-4 h-4 text-cyan-400" />
+                  <Button variant="outline" size="lg" className="gap-2 text-sm bg-white/80 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200">
+                    <FileDown className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     <span>Download CV</span>
                   </Button>
                 </a>
               ) : (
                 <Link href="/#contact">
-                  <Button variant="outline" size="lg" className="gap-2 text-sm">
-                    <Mail className="w-4 h-4 text-cyan-400" />
+                  <Button variant="outline" size="lg" className="gap-2 text-sm bg-white/80 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200">
+                    <Mail className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     <span>Contact Me</span>
                   </Button>
                 </Link>
@@ -110,7 +110,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110"
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                   aria-label="GitHub Profile"
                 >
                   <Github className="w-4 h-4" />
@@ -121,7 +121,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110"
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -132,7 +132,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-pink-400 hover:border-pink-500/40 transition-all hover:scale-110"
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-pink-500 hover:border-pink-500/40 transition-all hover:scale-110 shadow-sm"
                   aria-label="Instagram Profile"
                 >
                   <Instagram className="w-4 h-4" />
@@ -143,7 +143,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   href={socialLinks.itch_io}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-red-400 hover:border-red-500/40 transition-all hover:scale-110"
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-500 hover:border-red-500/40 transition-all hover:scale-110 shadow-sm"
                   aria-label="itch.io Games"
                 >
                   <Gamepad2 className="w-4 h-4" />
@@ -156,7 +156,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                       ? socialLinks.email
                       : `mailto:${socialLinks.email}`
                   }
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110"
+                  className="p-2.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                   aria-label="Email"
                 >
                   <Mail className="w-4 h-4" />
@@ -169,11 +169,11 @@ export function HeroSection({ profile }: HeroSectionProps) {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative group">
               {/* Outer Glow Halo */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-pulse-glow" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-3xl blur-xl opacity-20 dark:opacity-30 group-hover:opacity-50 dark:group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-pulse-glow" />
 
               {/* Main Photo Card */}
-              <div className="relative w-72 h-88 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-slate-700/80 bg-slate-950 p-2 shadow-2xl">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-900">
+              <div className="relative w-72 h-88 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-950 p-2 shadow-xl dark:shadow-2xl">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900">
                   <Image
                     src={photoUrl}
                     alt={name}
@@ -182,14 +182,14 @@ export function HeroSection({ profile }: HeroSectionProps) {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 dark:from-slate-950/80 via-transparent to-transparent" />
                 </div>
 
                 {/* Floating Corner Badges */}
-                <div className="absolute bottom-4 left-4 right-4 glass-card rounded-xl p-3 border border-white/10 backdrop-blur-md shadow-lg">
+                <div className="absolute bottom-4 left-4 right-4 glass-card rounded-xl p-3 border border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-lg">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-white">Universitas Sriwijaya</span>
-                    <span className="text-[10px] text-cyan-400 font-mono">UNSRI &bull; IF</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">Universitas Sriwijaya</span>
+                    <span className="text-[10px] text-cyan-600 dark:text-cyan-400 font-mono font-medium">UNSRI &bull; IF</span>
                   </div>
                 </div>
               </div>

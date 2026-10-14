@@ -63,10 +63,10 @@ export function AboutSection({ profile }: AboutSectionProps) {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Background & Story</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             About Me
           </h2>
-          <p className="text-sm text-slate-400 mt-2 max-w-lg">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-lg">
             A glimpse into my academic journey, passion for technology, and aspirations.
           </p>
         </div>
@@ -74,18 +74,18 @@ export function AboutSection({ profile }: AboutSectionProps) {
         {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Bio Card (7 cols) */}
-          <div className="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs">
+          <div className="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-6">
+            <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-mono text-xs">
               <Code2 className="w-4 h-4" />
               <span>whoami --verbose</span>
             </div>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+            <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
               {profile.bio ||
                 "Informatics Engineering student at Universitas Sriwijaya with a strong passion for modern web architecture and interactive game development. I enjoy building end-to-end digital experiences—from responsive client interfaces to robust relational databases and multiplayer real-time logic."}
             </p>
 
-            <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-4">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap items-center gap-4">
               {profile.cv_url && (
                 <a href={profile.cv_url} target="_blank" rel="noopener noreferrer">
                   <Button variant="glow" size="default" className="gap-2 text-xs">
@@ -94,8 +94,8 @@ export function AboutSection({ profile }: AboutSectionProps) {
                   </Button>
                 </a>
               )}
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
                 <span>Passionate about Clean Code & Architecture</span>
               </div>
             </div>
@@ -108,7 +108,7 @@ export function AboutSection({ profile }: AboutSectionProps) {
               return (
                 <div
                   key={index}
-                  className="glass-card rounded-xl p-4 border border-slate-800 flex items-start gap-4 hover:border-slate-700 transition-colors"
+                  className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex items-start gap-4 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-sm"
                 >
                   <div
                     className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border ${fact.bg} ${fact.color}`}
@@ -119,10 +119,10 @@ export function AboutSection({ profile }: AboutSectionProps) {
                     <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block">
                       {fact.label}
                     </span>
-                    <h4 className="text-sm font-bold text-white truncate">
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">
                       {fact.value}
                     </h4>
-                    <span className="text-xs text-slate-400 block mt-0.5">
+                    <span className="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">
                       {fact.sub}
                     </span>
                   </div>

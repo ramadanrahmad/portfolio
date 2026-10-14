@@ -68,26 +68,26 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-400 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-600 dark:text-cyan-400 mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Career & Campus Track</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Experience & Education
             </h2>
-            <p className="text-sm text-slate-400 mt-2">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
               Timeline of formal education, leadership roles, and hackathons/game jams.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-slate-900/60 border border-slate-800 text-xs self-start sm:self-auto">
+          <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs self-start sm:self-auto shadow-sm">
             <button
               onClick={() => setActiveFilter("all")}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 activeFilter === "all"
                   ? "bg-cyan-500 text-slate-950 font-semibold"
-                  : "text-slate-400 hover:text-slate-200"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               All
@@ -102,7 +102,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                     className={`px-3 py-1.5 rounded-lg transition-all ${
                       activeFilter === type
                         ? "bg-cyan-500 text-slate-950 font-semibold"
-                        : "text-slate-400 hover:text-slate-200"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
                     }`}
                   >
                     {config.label.split(" ")[0]}
@@ -114,7 +114,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
         </div>
 
         {/* Vertical Timeline */}
-        <div className="relative pl-6 sm:pl-8 border-l border-slate-800/80 space-y-8">
+        <div className="relative pl-6 sm:pl-8 border-l border-slate-200 dark:border-slate-800/80 space-y-8">
           {filtered.map((item) => {
             const config = TYPE_CONFIG[item.type] || TYPE_CONFIG.education;
             const Icon = config.icon;
@@ -122,12 +122,12 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
             return (
               <div key={item.id} className="relative group">
                 {/* Node Bullet Glowing */}
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-slate-950 border-2 border-cyan-500 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/20 group-hover:scale-110 group-hover:border-cyan-400 transition-all">
-                  <div className="w-2 h-2 rounded-full bg-cyan-400" />
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-cyan-500 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/20 group-hover:scale-110 group-hover:border-cyan-400 transition-all">
+                  <div className="w-2 h-2 rounded-full bg-cyan-500" />
                 </div>
 
                 {/* Card */}
-                <div className="glass-card rounded-2xl p-6 border border-slate-800 hover:border-slate-700 transition-colors space-y-3">
+                <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors space-y-3 shadow-sm">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span
                       className={`text-[10px] uppercase font-mono px-2.5 py-0.5 rounded-full border ${config.badge} flex items-center gap-1`}
@@ -136,8 +136,8 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                       <span>{config.label}</span>
                     </span>
 
-                    <span className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                    <span className="text-xs text-slate-500 dark:text-slate-400 font-mono flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                       <span>
                         {item.start_date} - {item.end_date || "Present"}
                       </span>
@@ -145,16 +145,16 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                   </div>
 
                   <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                       {item.title}
                     </h3>
-                    <h4 className="text-xs font-semibold text-cyan-400 mt-0.5">
+                    <h4 className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 mt-0.5">
                       {item.institution}
                     </h4>
                   </div>
 
                   {item.description && (
-                    <p className="text-xs text-slate-400 leading-relaxed whitespace-pre-line pt-1">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line pt-1">
                       {item.description}
                     </p>
                   )}

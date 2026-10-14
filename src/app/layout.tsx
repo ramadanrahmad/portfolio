@@ -84,8 +84,27 @@ export default function RootLayout({
     <html
       lang="en"
       className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('portfolio-theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else if (saved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-700 dark:selection:text-cyan-300 bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
         {children}
       </body>
     </html>

@@ -42,20 +42,20 @@ export function ProjectsCatalogView({
   return (
     <div className="space-y-8">
       {/* Search & Filter Controls */}
-      <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+      <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
         {/* Search Bar */}
         <div className="relative">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <Input
             placeholder="Search projects by title, description, or tech stack..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-11 bg-slate-950/80 border-slate-800 text-sm focus-visible:border-cyan-500"
+            className="pl-10 h-11 bg-white dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 text-sm focus-visible:border-cyan-500"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -63,7 +63,7 @@ export function ProjectsCatalogView({
         </div>
 
         {/* Category Pills & Tag Filter Row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-slate-800/80">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-slate-200 dark:border-slate-800/80">
           {/* Categories */}
           <div className="flex flex-wrap gap-1.5">
             {[
@@ -78,7 +78,7 @@ export function ProjectsCatalogView({
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   activeCategory === cat.id
                     ? "bg-cyan-500 text-slate-950 font-semibold shadow-sm shadow-cyan-500/20"
-                    : "bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200"
+                    : "bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
                 }`}
               >
                 {cat.label}
@@ -86,15 +86,15 @@ export function ProjectsCatalogView({
             ))}
           </div>
 
-          <span className="text-xs text-slate-500 font-mono">
+          <span className="text-xs text-slate-500 dark:text-slate-500 font-mono">
             Showing {filtered.length} of {initialProjects.length} projects
           </span>
         </div>
 
         {/* Tech Tags Filter Row */}
         {allTags.length > 0 && (
-          <div className="pt-2 border-t border-slate-800/60">
-            <span className="text-[11px] text-slate-400 font-medium block mb-2">
+          <div className="pt-2 border-t border-slate-200 dark:border-slate-800/60">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium block mb-2">
               Filter by Technology:
             </span>
             <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
@@ -106,8 +106,8 @@ export function ProjectsCatalogView({
                     onClick={() => setSelectedTag(isSelected ? null : tag)}
                     className={`text-[11px] px-2.5 py-1 rounded-md border transition-all ${
                       isSelected
-                        ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-300 font-medium"
-                        : "bg-slate-900/40 border-slate-800 text-slate-400 hover:text-slate-200"
+                        ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-700 dark:text-cyan-300 font-semibold"
+                        : "bg-slate-100 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
                     }`}
                   >
                     {tag} {isSelected && "✕"}
@@ -121,12 +121,12 @@ export function ProjectsCatalogView({
 
       {/* Projects Grid */}
       {filtered.length === 0 ? (
-        <div className="glass-card rounded-2xl p-16 text-center border border-slate-800">
-          <FolderGit2 className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-lg font-bold text-white mb-1">
+        <div className="glass-card rounded-2xl p-16 text-center border border-slate-200 dark:border-slate-800">
+          <FolderGit2 className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-3" />
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
             No projects found
           </h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
             Try adjusting your search query or clearing the active filters to see more results.
           </p>
         </div>

@@ -124,21 +124,21 @@ export default async function ProjectDetailPage({
   const youtubeEmbedUrl = getYouTubeEmbedUrl(project.video_url);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#07090e] text-slate-100">
+    <div className="min-h-screen flex flex-col justify-between bg-slate-50 dark:bg-[#07090e] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       <Navbar />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-24 w-full">
         {/* Breadcrumb & Back Link */}
-        <div className="flex items-center gap-2 text-xs text-slate-500 mb-8 font-medium">
+        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-8 font-medium">
           <Link
             href="/projects"
-            className="hover:text-cyan-400 transition-colors flex items-center gap-1 group"
+            className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-1 group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>All Projects</span>
           </Link>
           <span>/</span>
-          <span className="text-slate-300 truncate">{project.title}</span>
+          <span className="text-slate-800 dark:text-slate-300 truncate font-semibold">{project.title}</span>
         </div>
 
         {/* Project Header */}
@@ -160,44 +160,44 @@ export default async function ProjectDetailPage({
             </Badge>
 
             {project.is_featured && (
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 border border-amber-500/30 text-amber-300">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300">
                 Featured Work
               </span>
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.15]">
             {project.title}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
             {project.short_description}
           </p>
 
           {/* Quick Meta Row (Role, Team, Dates) */}
-          <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-400 border-t border-slate-800/80">
+          <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800/80">
             {project.role && (
               <div className="flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-cyan-400" />
+                <UserCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 <span>
-                  Role: <strong className="text-slate-200">{project.role}</strong>
+                  Role: <strong className="text-slate-800 dark:text-slate-200">{project.role}</strong>
                 </span>
               </div>
             )}
             {project.team_size && (
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-indigo-400" />
+                <Users className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span>
-                  Team: <strong className="text-slate-200">{project.team_size}</strong>
+                  Team: <strong className="text-slate-800 dark:text-slate-200">{project.team_size}</strong>
                 </span>
               </div>
             )}
             {(project.start_date || project.end_date) && (
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-emerald-400" />
+                <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>
                   Timeline:{" "}
-                  <strong className="text-slate-200">
+                  <strong className="text-slate-800 dark:text-slate-200">
                     {formatDate(project.start_date)} -{" "}
                     {project.end_date ? formatDate(project.end_date) : "Present"}
                   </strong>
@@ -245,7 +245,7 @@ export default async function ProjectDetailPage({
 
         {/* Thumbnail Utama / Hero Image */}
         {project.thumbnail_url && (
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 mb-12 shadow-2xl">
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 mb-12 shadow-xl">
             <Image
               src={project.thumbnail_url}
               alt={project.title}
@@ -259,9 +259,9 @@ export default async function ProjectDetailPage({
         {/* Playable Web Game Embed (Jika Ada) */}
         {project.embed_url && (
           <div className="mb-12 space-y-3">
-            <div className="flex items-center gap-2 text-cyan-400">
+            <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
               <Play className="w-4 h-4" />
-              <h2 className="text-base font-bold text-white">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 Play Instantly in Browser
               </h2>
             </div>
@@ -279,13 +279,13 @@ export default async function ProjectDetailPage({
         {/* Video Demo / Trailer Embed (Jika Ada) */}
         {youtubeEmbedUrl && (
           <div className="mb-12 space-y-3">
-            <div className="flex items-center gap-2 text-indigo-400">
+            <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
               <Video className="w-4 h-4" />
-              <h2 className="text-base font-bold text-white">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 Gameplay Demo / Video Trailer
               </h2>
             </div>
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-800 bg-black shadow-2xl">
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-black shadow-2xl">
               <iframe
                 src={youtubeEmbedUrl}
                 className="w-full h-full border-0"
@@ -299,9 +299,9 @@ export default async function ProjectDetailPage({
 
         {/* Spesifikasi Teknis Khusus (Extra Jsonb) */}
         {project.extra && Object.keys(project.extra).length > 0 && (
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 mb-12">
-            <h2 className="text-sm font-semibold text-white border-b border-slate-800 pb-3 mb-4 flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-cyan-400" />
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 mb-12">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 mb-4 flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               Technical Specifications
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
@@ -310,7 +310,7 @@ export default async function ProjectDetailPage({
                   <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">
                     {key}
                   </span>
-                  <span className="text-slate-200 font-medium">
+                  <span className="text-slate-800 dark:text-slate-200 font-medium">
                     {String(val)}
                   </span>
                 </div>
@@ -321,55 +321,55 @@ export default async function ProjectDetailPage({
 
         {/* Dokumentasi Markdown Utama */}
         <section className="mb-14">
-          <div className="glass-card rounded-2xl p-6 sm:p-10 border border-slate-800/80">
-            <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-3 mb-6">
+          <div className="glass-card rounded-2xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800/80">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3 mb-6">
               About the Project & Technical Architecture
             </h2>
-            <div className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed space-y-4">
+            <div className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 text-sm leading-relaxed space-y-4">
               <ReactMarkdown
                 components={{
                   h1: ({ children }) => (
-                    <h2 className="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-800 pb-2">
+                    <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">
                       {children}
                     </h2>
                   ),
                   h2: ({ children }) => (
-                    <h3 className="text-lg font-bold text-cyan-300 mt-5 mb-2">
+                    <h3 className="text-lg font-bold text-cyan-700 dark:text-cyan-300 mt-5 mb-2">
                       {children}
                     </h3>
                   ),
                   h3: ({ children }) => (
-                    <h4 className="text-base font-semibold text-indigo-300 mt-4 mb-2">
+                    <h4 className="text-base font-semibold text-indigo-700 dark:text-indigo-300 mt-4 mb-2">
                       {children}
                     </h4>
                   ),
                   p: ({ children }) => (
-                    <p className="text-slate-300 leading-relaxed mb-4">
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside space-y-1.5 my-3 text-slate-300">
+                    <ul className="list-disc list-inside space-y-1.5 my-3 text-slate-700 dark:text-slate-300">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside space-y-1.5 my-3 text-slate-300">
+                    <ol className="list-decimal list-inside space-y-1.5 my-3 text-slate-700 dark:text-slate-300">
                       {children}
                     </ol>
                   ),
                   code: ({ children }) => (
-                    <code className="bg-slate-900 border border-slate-800 px-1.5 py-0.5 rounded text-cyan-300 font-mono text-xs">
+                    <code className="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded text-cyan-700 dark:text-cyan-300 font-mono text-xs">
                       {children}
                     </code>
                   ),
                   pre: ({ children }) => (
-                    <pre className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl overflow-x-auto text-xs my-4 text-cyan-300">
+                    <pre className="bg-slate-900 border border-slate-800 p-4 rounded-xl overflow-x-auto text-xs my-4 text-cyan-300">
                       {children}
                     </pre>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-2 border-cyan-500 pl-4 italic text-slate-400 my-4">
+                    <blockquote className="border-l-2 border-cyan-500 pl-4 italic text-slate-600 dark:text-slate-400 my-4">
                       {children}
                     </blockquote>
                   ),
@@ -378,7 +378,7 @@ export default async function ProjectDetailPage({
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
+                      className="text-cyan-600 dark:text-cyan-400 underline underline-offset-4 hover:text-cyan-500"
                     >
                       {children}
                     </a>
@@ -393,16 +393,16 @@ export default async function ProjectDetailPage({
 
         {/* Tech Stack Tags */}
         <section className="mb-14">
-          <div className="glass-card rounded-2xl p-6 border border-slate-800">
-            <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-cyan-400" />
+          <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               Technologies & Tools Used
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.tech_tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-cyan-300"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-cyan-700 dark:text-cyan-300"
                 >
                   {tag}
                 </span>
@@ -419,17 +419,17 @@ export default async function ProjectDetailPage({
         )}
 
         {/* Navigasi Proyek Sebelumnya & Selanjutnya */}
-        <div className="pt-10 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="pt-10 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {prevProject ? (
             <Link
               href={`/projects/${prevProject.slug}`}
-              className="glass-card rounded-xl p-4 border border-slate-800 hover:border-cyan-500/40 transition-all group flex flex-col"
+              className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 transition-all group flex flex-col"
             >
               <span className="text-[11px] text-slate-500 flex items-center gap-1 mb-1">
                 <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                 Previous Project
               </span>
-              <span className="font-semibold text-sm text-slate-200 group-hover:text-cyan-300 transition-colors truncate">
+              <span className="font-semibold text-sm text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors truncate">
                 {prevProject.title}
               </span>
             </Link>
@@ -440,13 +440,13 @@ export default async function ProjectDetailPage({
           {nextProject ? (
             <Link
               href={`/projects/${nextProject.slug}`}
-              className="glass-card rounded-xl p-4 border border-slate-800 hover:border-cyan-500/40 transition-all group flex flex-col text-right items-end sm:col-start-2"
+              className="glass-card rounded-xl p-4 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 transition-all group flex flex-col text-right items-end sm:col-start-2"
             >
               <span className="text-[11px] text-slate-500 flex items-center gap-1 mb-1">
                 Next Project
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </span>
-              <span className="font-semibold text-sm text-slate-200 group-hover:text-cyan-300 transition-colors truncate">
+              <span className="font-semibold text-sm text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors truncate">
                 {nextProject.title}
               </span>
             </Link>
