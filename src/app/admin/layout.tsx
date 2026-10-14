@@ -15,7 +15,7 @@ import {
   X,
   Code2,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -36,6 +36,18 @@ export default function AdminLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
+  // Pastikan Admin Panel selalu bernuansa Dark Cyber Console
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+    return () => {
+      // Saat navigasi keluar dari admin, kembalikan preferensi public yang tersimpan di localStorage
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      if (savedTheme === "light") {
+        document.documentElement.classList.remove("dark");
+      }
+    };
+  }, []);
+
   // Jika sedang di halaman login, tampilkan halaman penuh tanpa sidebar
   if (pathname === "/admin/login") {
     return <>{children}</>;
@@ -50,7 +62,7 @@ export default function AdminLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#07090e] text-slate-100 flex flex-col md:flex-row">
+    <div className="dark admin-scope min-h-screen bg-[#07090e] text-slate-100 flex flex-col md:flex-row">
       {/* Mobile Top Header */}
       <div className="md:hidden flex items-center justify-between p-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">

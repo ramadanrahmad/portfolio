@@ -145,6 +145,12 @@
   border: 1px solid var(--card-border);
 }
 
+.dark .glass-card,
+.admin-scope .glass-card {
+  background: rgba(13, 19, 31, 0.75);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 .glass-card-hover {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
