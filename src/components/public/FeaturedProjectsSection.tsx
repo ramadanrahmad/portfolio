@@ -81,10 +81,14 @@ export function FeaturedProjectsSection({
         {/* View All Button */}
         <div className="mt-14 text-center">
           <Link href="/projects">
-            <Button variant="outline" size="lg" className="gap-2 text-xs h-11 px-6 group">
-              <FolderGit2 className="w-4 h-4 text-cyan-400" />
-              <span>View All Projects in Catalog</span>
-              <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-transform" />
+            <Button
+              variant="outline"
+              size="lg"
+              className="gap-2.5 text-sm h-11 px-6 rounded-xl bg-white hover:bg-slate-50 dark:bg-slate-900/80 dark:hover:bg-slate-800/80 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-400 dark:hover:border-cyan-500/50 shadow-sm hover:shadow-md transition-all group"
+            >
+              <FolderGit2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span className="font-semibold">View All Projects in Catalog</span>
+              <ArrowRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
