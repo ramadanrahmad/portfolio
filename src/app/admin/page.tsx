@@ -22,20 +22,7 @@ export default async function AdminDashboardPage() {
   const supabase = await createClient();
 
   // 1. Ambil data analitik dan status Resend secara aman
-  let analytics = {
-    totalViews: 0,
-    todayViews: 0,
-    cvDownloads: 0,
-    topProjects: [],
-    dailyTrend: [],
-    recentActivity: [],
-  };
-
-  try {
-    analytics = await getAnalyticsSummary();
-  } catch (e) {
-    console.warn("Gagal mengambil data analitik:", e);
-  }
+  const analytics = await getAnalyticsSummary();
 
   const hasResend = !!process.env.RESEND_API_KEY;
 
